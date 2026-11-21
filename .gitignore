@@ -1,0 +1,4 @@
+# Nur die Seite veröffentlichen
+*
+!index.html
+!.gitignore
