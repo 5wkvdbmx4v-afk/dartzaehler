@@ -162,7 +162,7 @@ input::placeholder{color:var(--muted)}
 
 /* ---------- Dialog ---------- */
 .modal{position:fixed;inset:0;background:rgba(23,74,115,.72);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10}
-.dlg{background:#fff;width:100%;max-width:560px;padding:40px 36px 32px;text-align:center}
+.dlg{background:#fff;width:100%;max-width:640px;padding:40px 36px 32px;text-align:center}
 .dlg .title{font-size:36px}
 .dlg p{font-size:21px;margin:20px 0 28px}
 .dlg p b{font-weight:700}
@@ -235,6 +235,183 @@ svg.board text{font-family:var(--font);font-size:9px;font-weight:700;fill:var(--
   .tgrid{grid-template-columns:1fr}
   .tpanel+.tpanel{border-left:0;border-top:1px solid var(--navy-20)}
 }
+/* ---------- Turnier ---------- */
+.view{min-height:100%;display:flex;flex-direction:column}
+.wide{flex:1;width:100%;max-width:1440px;margin:0 auto;padding:22px 24px 56px}
+input[type=email],input[type=password],input[type=number]{width:100%;height:50px;padding:0 14px;border:1px solid var(--navy-30);border-radius:0;background:#fff;color:var(--navy);font-size:20px}
+input[type=email]:focus,input[type=password]:focus,input[type=number]:focus,textarea:focus{outline:0;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+textarea{width:100%;min-height:260px;padding:10px 14px;border:1px solid var(--navy-30);border-radius:0;font:inherit;font-size:18px;line-height:1.45;color:var(--navy);resize:vertical}
+input[readonly]{background:var(--navy-05)}
+select:disabled,.seg button:disabled,.check input:disabled{opacity:.55;cursor:default}
+.seg button:disabled:not(.on){background:#fff;color:var(--navy)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.tile{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:26px 24px;min-height:180px;text-align:left;box-shadow:inset 0 0 0 1px var(--navy-30);transition:background-color .12s,color .12s}
+.tile b{font-size:28px;font-weight:700;text-transform:uppercase;line-height:1.05}
+.tile span{font-size:17px;color:var(--muted)}
+.tile:hover{background:var(--navy-05);box-shadow:inset 0 0 0 2px var(--navy)}
+.tile.main{background:var(--navy);color:#fff;box-shadow:none}
+.tile.main span{color:rgba(255,255,255,.78)}
+.tile.main:hover{background:var(--gold);color:var(--navy)}
+.tile.main:hover span{color:var(--navy)}
+.link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);text-transform:uppercase;font-size:16px;padding:8px 10px}
+.link:hover{color:var(--navy);background:var(--navy-05)}
+.center{text-align:center}
+.note{padding:12px 16px;background:var(--navy-05);font-size:17px;margin:0 0 16px;border-left:3px solid var(--sky)}
+.note.err{color:var(--red);background:rgba(227,0,11,.05);border-left-color:var(--red)}
+.note.ok{border-left-color:var(--gold)}
+.tabs{display:flex;border-bottom:1px solid var(--navy-20);margin:0 0 22px;overflow-x:auto}
+.tabs button{padding:12px 18px;font-size:17px;font-weight:700;text-transform:uppercase;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button:hover{color:var(--accent)}
+.tabs button.on{color:var(--navy);border-bottom-color:var(--navy)}
+.sync.err{color:var(--red);font-weight:700}
+.h2{font-size:15px;font-weight:700;text-transform:uppercase;margin:30px 0 10px}
+.h2:first-child{margin-top:0}
+.prog{display:flex;align-items:center;gap:14px;font-size:16px;color:var(--muted);margin-bottom:18px}
+.prog .b{flex:1;max-width:340px;height:6px;background:var(--navy-10)}
+.prog .b i{display:block;height:100%;background:var(--navy)}
+/* Scheiben */
+.boards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.bcard{box-shadow:inset 0 0 0 1px var(--navy-30);padding:14px 16px 12px;min-height:168px;display:flex;flex-direction:column;gap:6px}
+.bcard.live{box-shadow:inset 0 0 0 2px var(--navy);border-top:4px solid var(--gold);padding-top:10px}
+.bcard h3{margin:0;font-size:15px;font-weight:700;text-transform:uppercase;display:flex;justify-content:space-between;gap:10px}
+.bcard h3 span{color:var(--muted);font-weight:400}
+.bcard.live h3 span{color:var(--accent);font-weight:700}
+.bcard .vs{font-size:22px;font-weight:700;text-transform:uppercase;line-height:1.15;overflow-wrap:anywhere}
+.bcard .vs i{display:block;font-style:normal;font-size:14px;font-weight:400;color:var(--muted);text-transform:none}
+.bcard .ls{font-size:30px;font-weight:700;line-height:1}
+.bcard .ls small{font-size:14px;font-weight:400;color:var(--muted);text-transform:uppercase;margin-left:6px}
+.bcard .rest{font-size:15px;color:var(--muted)}
+.bcard .nx{margin-top:auto;font-size:15px;color:var(--muted);border-top:1px solid var(--navy-10);padding-top:6px}
+.bcard .nx b{color:var(--navy);font-weight:700}
+.bcard .free{color:var(--muted);font-size:18px}
+/* Gruppen */
+.groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(540px,1fr));gap:22px}
+.gbox{box-shadow:inset 0 0 0 1px var(--navy-20);padding:18px 18px 12px;min-width:0}
+.gbox .title{font-size:24px;margin-bottom:12px}
+table.tab{width:100%;border-collapse:collapse;table-layout:fixed}
+.tab th,.tab td{padding:6px 5px;text-align:right;border-bottom:1px solid var(--navy-10);white-space:nowrap}
+.tab th{font-size:13px;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--navy-30)}
+.tab td{font-size:18px}
+.tab .c1{width:26px;text-align:left;color:var(--muted)}
+.tab .c2{text-align:left;font-weight:700;overflow:hidden;text-overflow:ellipsis}
+.tab th.c2{font-weight:700}
+.tab .cn{width:34px}
+.tab .cl{width:58px}
+.tab .cp{width:44px;font-weight:700}
+.tab tr.q td.c1{box-shadow:inset 3px 0 0 var(--gold);color:var(--navy);font-weight:700}
+.mlist{list-style:none;margin:12px 0 0;padding:0}
+.mrow{display:grid;grid-template-columns:1fr 64px 1fr 130px;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px solid var(--navy-10);font-size:17px}
+.mrow.full{grid-template-columns:130px 1fr 64px 1fr 170px}
+.mrow .lb{font-size:13px;text-transform:uppercase;color:var(--muted)}
+.mrow .a{text-align:right}
+.mrow .a,.mrow .b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mrow .r{text-align:center;font-weight:700}
+.mrow .w{font-weight:700}
+.mrow .s{font-size:13px;text-transform:uppercase;color:var(--muted);text-align:right}
+.mrow.live{background:var(--navy-05)}
+.mrow.live .s{color:var(--accent);font-weight:700}
+.mrow.done .a:not(.w),.mrow.done .b:not(.w){color:var(--navy-60)}
+.adm .mrow,.adm .km{cursor:pointer}
+.adm .mrow:hover,.adm .km:hover{background:var(--navy-05);box-shadow:inset 0 0 0 1px var(--gold)}
+/* K.o. */
+.bracket{display:grid;grid-template-columns:repeat(4,minmax(210px,1fr));gap:20px;overflow-x:auto}
+.bcol{display:flex;flex-direction:column}
+.bcol h3{font-size:15px;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0 0 10px;text-align:center}
+.bcol .ms{flex:1;display:flex;flex-direction:column;justify-content:space-around;gap:10px}
+.km{box-shadow:inset 0 0 0 1px var(--navy-30);padding:6px 10px 5px}
+.km .t{display:flex;justify-content:space-between;gap:8px;font-size:17px;padding:3px 0}
+.km .t span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.km .t+.t{border-top:1px solid var(--navy-10)}
+.km .t.w{font-weight:700}
+.km .t.tbd span{color:var(--muted)}
+.km .s{font-size:12px;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.km.live{box-shadow:inset 0 0 0 2px var(--navy)}
+.km.live .s{color:var(--accent);font-weight:700}
+.km.hold{opacity:.72}
+/* Zählen an einer Scheibe */
+.bnum{font-size:140px;font-weight:700;line-height:.95;text-align:center;margin:8px 0 2px}
+.bsub{text-align:center;font-size:16px;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+.next{box-shadow:inset 0 0 0 1px var(--navy-30);padding:22px 20px;text-align:center;margin:0 0 16px}
+.next small{display:block;font-size:14px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.next .vs{font-size:34px;font-weight:700;text-transform:uppercase;line-height:1.1;overflow-wrap:anywhere}
+.next .vs em{font-style:normal;font-weight:400;color:var(--muted);font-size:22px;margin:0 10px}
+.next .mt{font-size:16px;color:var(--muted);margin-top:8px}
+/* Admin */
+.adm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 20px}
+.adm-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn.sm{height:46px;font-size:16px;padding:0 18px}
+.btn:disabled,.btn:disabled:hover{opacity:.4;background:var(--navy);color:#fff;cursor:default}
+.btn.sec:disabled,.btn.sec:disabled:hover{background:#fff;color:var(--navy)}
+.btn.warn{background:#fff;color:var(--red);box-shadow:inset 0 0 0 2px var(--red)}
+.btn.warn:hover{background:var(--red);color:#fff}
+.tgroups{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tg{box-shadow:inset 0 0 0 1px var(--navy-20);padding:10px 12px}
+.tg h4{margin:0 0 6px;font-size:15px;text-transform:uppercase}
+.tg h4 span{color:var(--muted);font-weight:400}
+.tg div{display:grid;grid-template-columns:1fr 64px;gap:6px;align-items:center;margin-top:4px;font-size:16px}
+.tg div span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tg select{height:34px;font-size:16px;padding:0 24px 0 8px;background-position:right 4px center;background-size:14px}
+.tg input[type=text]{height:34px;font-size:16px;padding:0 8px}
+.tg.wide-names div{grid-template-columns:1fr}
+.res{display:grid;grid-template-columns:1fr 90px 90px;gap:8px 12px;align-items:center;text-align:left;margin:20px 0}
+.res .h{font-size:13px;text-transform:uppercase;color:var(--muted);text-align:center}
+.res b{text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.res input{text-align:center}
+.dlg .f{text-align:left;margin-bottom:14px}
+.dlg .check{font-size:17px;margin:4px 0 18px}
+.dlg .err{color:var(--red);font-weight:700;min-height:22px;margin:-6px 0 10px}
+.dlg .info{font-size:16px;color:var(--muted);margin:10px 0 0}
+.dlg .btns .btn.warn{padding:0 10px}
+#amodal{z-index:20}
+.vbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--navy);color:#fff;padding:10px 20px;display:flex;gap:14px;align-items:center;justify-content:center;font-size:17px}
+.vbar button{background:var(--gold);color:var(--navy);font-weight:700;text-transform:uppercase;padding:8px 14px}
+.vbar span{opacity:.8;font-size:15px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:0 0 20px;padding:0}
+.steps li{list-style:none;padding:9px 6px 0 0;border-top:4px solid var(--navy-10);font-size:15px;font-weight:700;text-transform:uppercase;color:var(--muted)}
+.steps li span{display:block;font-size:14px;font-weight:400;text-transform:none}
+.steps li.done{border-top-color:var(--navy);color:var(--navy)}
+.steps li.cur{border-top-color:var(--gold);color:var(--navy)}
+.todo{box-shadow:inset 0 0 0 2px var(--navy);padding:22px 24px 24px;margin:0 0 26px}
+.todo>small{display:block;font-size:14px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.todo h2{margin:0 0 8px;font-size:30px;font-weight:700;text-transform:uppercase;line-height:1.1}
+.todo>p{margin:0 0 16px;font-size:18px;max-width:900px}
+.todo .prog{margin:0 0 16px}
+details.more{border-top:1px solid var(--navy-20)}
+details.more:last-child{border-bottom:1px solid var(--navy-20)}
+details.more>summary,details.gm>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+details.more>summary::-webkit-details-marker,details.gm>summary::-webkit-details-marker{display:none}
+details.more>summary{padding:15px 0;font-size:15px;font-weight:700;text-transform:uppercase}
+details.more>summary::after,details.gm>summary::after{content:"+";font-size:22px;font-weight:400;line-height:1;color:var(--accent)}
+details.more[open]>summary::after,details.gm[open]>summary::after{content:"–"}
+details.more>summary:hover,details.gm>summary:hover{color:var(--accent)}
+details.more>div{padding:0 0 20px}
+details.danger>summary{color:var(--red)}
+details.gm{margin-top:12px;border-top:1px solid var(--navy-20)}
+details.gm>summary{padding:10px 0 4px;font-size:14px;font-weight:700;text-transform:uppercase}
+details.gm>summary span{font-weight:400;color:var(--muted);text-transform:none;margin-left:auto}
+.seg.two{grid-template-columns:1fr 1fr}
+.seg.two button{height:64px;font-size:22px;text-transform:uppercase;padding:0 12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn:disabled#startBtn{opacity:.35}
+#tmCard{margin:6px 0 22px}
+.hstatus{text-align:center;font-size:17px;color:var(--accent);font-weight:700;min-height:24px;margin:-10px 0 18px}
+@media (max-width:1100px){
+  .boards{grid-template-columns:repeat(2,1fr)}
+  .tgroups,.adm-grid{grid-template-columns:repeat(2,1fr)}
+  .mrow.full{grid-template-columns:1fr 54px 1fr}
+  .mrow.full .lb,.mrow.full .s{grid-column:span 3;text-align:left}
+  .mrow.full .lb{order:-1}
+}
+@media (max-width:700px){
+  .tiles,.boards,.tgroups,.adm-grid{grid-template-columns:1fr}
+  .steps li{font-size:12px} .steps li span{display:none}
+  .todo{padding:18px 16px} .todo h2{font-size:24px}
+  .groups{grid-template-columns:1fr}
+  .tab .xs{display:none}
+  .gbox{padding:14px 12px 10px}
+  .mrow{grid-template-columns:1fr 54px 1fr}
+  .mrow .s{grid-column:span 3;text-align:center}
+  .bnum{font-size:100px}
+}
 @media (max-width:700px){
   .hm{grid-template-columns:1fr}
   .cmp td{font-size:19px}
@@ -256,23 +433,98 @@ svg.board text{font-family:var(--font);font-size:9px;font-weight:700;fill:var(--
   <symbol id="i-swap" viewBox="0 0 24 24"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></symbol>
 </svg>
 
-<!-- Einstellungen -->
-<div id="setup">
+<!-- Start -->
+<div id="home" class="view hidden">
   <header class="head">
-    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span>Darts-Turnier A-Junioren</span></div></div>
+    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span class="tTitle">Darts-Turnier A-Junioren</span></div></div>
+    <div></div>
+    <nav class="nav"><button id="hAdmin" title="Turnier verwalten"><span>Admin</span></button></nav>
+  </header>
+  <main class="page" style="max-width:1080px">
+    <h1 class="title">Darts-Turnier</h1>
+    <p class="lead">Was möchtest du tun?</p>
+    <p class="hstatus num" id="hStatus"></p>
+    <div class="tiles">
+      <button class="tile main" id="tCount"><b>Zählen</b><span id="tCountSub">An einer Scheibe die Turnierspiele zählen und die Resultate direkt senden</span></button>
+      <button class="tile" id="tPlan"><b>Turnierplan</b><span>Gruppen, Tabellen, K.o.-Phase und was gerade an welcher Scheibe läuft</span></button>
+      <button class="tile" id="tFree"><b>Freies Spiel</b><span>Ohne Turnier zählen, zum Üben oder für Zusatzspiele</span></button>
+    </div>
+  </main>
+</div>
+
+<!-- Zählen an einer Scheibe -->
+<div id="bview" class="view hidden">
+  <header class="head">
+    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span class="tTitle">Darts-Turnier A-Junioren</span></div></div>
+    <div class="lvl"><b>Zählen</b><span class="sync"></span></div>
+    <nav class="nav">
+      <button id="bvPlan"><svg class="i"><use href="#i-stats"/></svg><span>Turnierplan</span></button>
+      <button id="bvHome"><svg class="i"><use href="#i-back"/></svg><span>Start</span></button>
+    </nav>
+  </header>
+  <main class="page" id="bvBody"></main>
+</div>
+
+<!-- Turnierplan -->
+<div id="plan" class="view hidden">
+  <header class="head">
+    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span class="tTitle">Darts-Turnier A-Junioren</span></div></div>
+    <div class="lvl"><b>Turnierplan</b><span class="sync"></span></div>
+    <nav class="nav">
+      <button class="fsB" title="Vollbild" aria-label="Vollbild"><svg class="i"><use href="#i-full"/></svg></button>
+      <button id="plBack"><svg class="i"><use href="#i-back"/></svg><span>Zurück</span></button>
+    </nav>
+  </header>
+  <main class="wide">
+    <div class="tabs" id="plTabs" role="tablist"></div>
+    <div id="plBody"></div>
+  </main>
+</div>
+
+<!-- Admin -->
+<div id="admin" class="view hidden">
+  <header class="head">
+    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span class="tTitle">Darts-Turnier A-Junioren</span></div></div>
+    <div class="lvl"><b>Turnierleitung</b><span class="sync"></span></div>
+    <nav class="nav">
+      <button id="adOut" class="hidden"><span>Abmelden</span></button>
+      <button id="adHome"><svg class="i"><use href="#i-back"/></svg><span>Start</span></button>
+    </nav>
+  </header>
+  <main class="wide">
+    <div class="tabs hidden" id="adTabs" role="tablist"></div>
+    <div id="adBody"></div>
+  </main>
+</div>
+
+<div class="vbar hidden" id="verBar" role="status">Es gibt eine neue Version dieser Seite. <button type="button" onclick="location.reload()">Jetzt neu laden</button> <span>Der Spielstand bleibt erhalten.</span></div>
+<div class="modal hidden" id="amodal"><div class="dlg" id="acard" role="dialog" aria-modal="true"></div></div>
+
+<!-- Einstellungen -->
+<div id="setup" class="hidden">
+  <header class="head">
+    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span class="tTitle">Darts-Turnier A-Junioren</span></div></div>
   </header>
   <main class="page">
-    <h1 class="title">Dart-Zähler</h1>
-    <p class="lead">Spiel einrichten</p>
+    <h1 class="title" id="setupTitle">Dart-Zähler</h1>
+    <p class="lead" id="setupLead">Spiel einrichten</p>
+    <p class="note hidden" id="tmInfo"></p>
+    <div class="next hidden" id="tmCard"></div>
 
-    <fieldset>
-      <legend>Teams</legend>
+    <fieldset class="hidden" id="tmFirstFs">
+      <legend>Wer beginnt? <small style="font-weight:400;text-transform:none;color:var(--muted)">Nach dem Ausbullen antippen</small></legend>
+      <div class="seg two" id="firstSeg" role="group" aria-label="Wer beginnt?"><button type="button" data-v="0"></button><button type="button" data-v="1"></button></div>
+    </fieldset>
+
+    <fieldset id="teamsFs">
+      <legend id="teamsLeg">Teams</legend>
+      <p class="hint tmOnly hidden" style="margin:0 0 12px">Freiwillig. Mit Spielernamen zeigt der Zähler an, wer am Wurf ist, und die Statistik gibt es pro Spieler.</p>
       <div class="grid2">
-        <div class="f"><label for="n1">Team 1</label><input id="n1" type="text" maxlength="24" value="Team 1">
+        <div class="f"><label for="n1" id="n1lab">Team 1</label><input id="n1" type="text" maxlength="24" value="Team 1">
           <div class="plist" id="pl0"></div>
           <button type="button" class="addp" data-t="0"><svg class="i"><use href="#i-plus"/></svg>Spieler hinzufügen</button>
         </div>
-        <div class="f"><label for="n2">Team 2</label><input id="n2" type="text" maxlength="24" value="Team 2">
+        <div class="f"><label for="n2" id="n2lab">Team 2</label><input id="n2" type="text" maxlength="24" value="Team 2">
           <div class="plist" id="pl1"></div>
           <button type="button" class="addp" data-t="1"><svg class="i"><use href="#i-plus"/></svg>Spieler hinzufügen</button>
         </div>
@@ -280,7 +532,7 @@ svg.board text{font-family:var(--font);font-size:9px;font-weight:700;fill:var(--
       <p class="hint">Die Spieler werfen in dieser Reihenfolge abwechselnd. Ohne Spielernamen zählt das Team als Ganzes.</p>
     </fieldset>
 
-    <fieldset>
+    <fieldset id="modeFs">
       <legend>Modus</legend>
       <div class="grid2">
         <div class="f"><label for="sets">Sätze <small>(Erster auf …)</small></label><select id="sets"></select></div>
@@ -292,7 +544,7 @@ svg.board text{font-family:var(--font);font-size:9px;font-weight:700;fill:var(--
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset id="rulesFs">
       <legend>Regeln</legend>
       <label class="check"><input type="checkbox" id="dout" checked> Double-Out <small>Checkout mit Doppel oder Bull</small></label>
     </fieldset>
@@ -300,6 +552,8 @@ svg.board text{font-family:var(--font);font-size:9px;font-weight:700;fill:var(--
     <div class="actions">
       <button class="btn" id="startBtn">Spiel starten <svg class="i"><use href="#i-play"/></svg></button>
       <button class="btn sec hidden" id="resumeBtn">Laufendes Spiel fortsetzen</button>
+      <button class="btn sec hidden" id="tmGive">Spiel zurückgeben</button>
+      <button class="link" id="setupBack" style="justify-self:center"><svg class="i"><use href="#i-back"/></svg>Zurück</button>
     </div>
   </main>
 </div>
@@ -307,7 +561,7 @@ svg.board text{font-family:var(--font);font-size:9px;font-weight:700;fill:var(--
 <!-- Spiel -->
 <div id="game" class="hidden">
   <header class="head">
-    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span>Darts-Turnier A-Junioren</span></div></div>
+    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span class="tTitle">Darts-Turnier A-Junioren</span></div></div>
     <div class="lvl"><b id="lvl"></b><span id="rules"></span></div>
     <nav class="nav">
       <button id="undoBtn" title="Letzten Pfeil rückgängig machen"><svg class="i"><use href="#i-undo"/></svg><span>Rückgängig</span></button>
@@ -324,7 +578,7 @@ svg.board text{font-family:var(--font);font-size:9px;font-weight:700;fill:var(--
 <!-- Statistik -->
 <div id="stats" class="hidden">
   <header class="head">
-    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span>Darts-Turnier A-Junioren</span></div></div>
+    <div class="club"><img class="logo" alt="FC Malters"><div><b>FC Malters</b><span class="tTitle">Darts-Turnier A-Junioren</span></div></div>
     <div class="lvl"><b>Statistik</b><span id="sRules"></span></div>
     <nav class="nav">
       <button id="backBtn"><svg class="i"><use href="#i-back"/></svg><span>Zurück zum Spiel</span></button>
@@ -403,14 +657,19 @@ function fillSetup(c){
   syncFirst();
 }
 function newMatch(){
+  if(SETUP_TM && $('#first').value===''){ return; }
+  if(S && S.cfg.tm && !S.cfg.tm.sent && !S.cfg.tm.queued && !(SETUP_TM && SETUP_TM.id===S.cfg.tm.id)
+     && !confirm(`Das Turnierspiel ${S.cfg.names[0]} – ${S.cfg.names[1]} ist noch nicht abgeschlossen oder das Resultat wurde nicht gesendet. Trotzdem ein neues Spiel starten?`)) return;
   const names = [ $('#n1').value.trim()||'Team 1', $('#n2').value.trim()||'Team 2' ];
   const plRaw = [0,1].map(t=>plInputs(t).map(i=>i.value.trim()).filter(Boolean));
   const cfg = {
     names, plRaw,
     players: [0,1].map(t=>plRaw[t].length ? plRaw[t] : [names[t]]),
     sets:+$('#sets').value, legs:+$('#legs').value, start:+document.querySelector('#start .on').dataset.v,
-    first:+$('#first').value, dout:$('#dout').checked
+    first:+$('#first').value, dout:$('#dout').checked,
+    tm: SETUP_TM ? Object.assign({}, SETUP_TM, {sent:false}) : null
   };
+  SETUP_TM = null;
   S = {
     cfg, sets:[0,0], legs:[0,0], scores:[cfg.start,cfg.start], turn:cfg.first, turnStart:cfg.start,
     darts:[], legIdx:0, log:[[],[]], pts:[0,0], cnt:[0,0], pending:null, over:false, msg:'',
@@ -426,14 +685,14 @@ $('#startBtn').onclick = newMatch;
 $('#resumeBtn').onclick = showGame;
 
 function showView(id){
-  ['setup','game','stats'].forEach(v=>$('#'+v).classList.toggle('hidden', v!==id));
+  VIEWS.forEach(v=>$('#'+v).classList.toggle('hidden', v!==id));
   if(id!=='game') $('#modal').classList.add('hidden');
+  $('#amodal').classList.add('hidden');
   window.scrollTo(0,0);
 }
 function showSetup(){
-  showView('setup');
-  $('#resumeBtn').classList.toggle('hidden', !(S && !S.over));
-  if(S) fillSetup(S.cfg);
+  if(S && S.cfg.tm){ showBoard(); return; }
+  showFree();
 }
 function showGame(){ showView('game'); render(); }
 function showStats(){ showView('stats'); renderStats(); }
@@ -505,7 +764,7 @@ function nextLeg(){
   save(); render();
 }
 function undo(){
-  if(!H.length) return;
+  if(!H.length || (S.cfg.tm && (S.cfg.tm.sent || S.cfg.tm.queued || S.cfg.tm.sending))) return;
   const o = JSON.parse(H.pop());
   o.dl = S.dl.slice(0, o.nd); o.vl = S.vl.slice(0, o.nv); o.lw = S.lw.slice(0, o.nw);
   delete o.nd; delete o.nv; delete o.nw;
@@ -538,14 +797,16 @@ function checkout(r, left){
 
 /* ---------- Rendering Spiel ---------- */
 function avg(p){ return S.cnt[p] ? (S.pts[p]/S.cnt[p]*3).toFixed(1) : '–'; }
-function rulesText(c){ return `Erster auf ${c.sets} ${c.sets===1?'Satz':'Sätze'} · Erster auf ${c.legs} ${c.legs===1?'Leg':'Legs'} · ${c.start} · ${c.dout?'Double-Out':'Straight-Out'}`; }
+function rulesText(c){ return `${c.start} · ${c.sets>1 ? 'Erster auf '+c.sets+' Sätze · ' : ''}Erster auf ${c.legs} ${c.legs===1?'Leg':'Legs'} · ${c.dout?'Double-Out':'Straight-Out'}`; }
 function render(){
   if(!S) return;
   const c = S.cfg;
   const setNo = S.sets[0]+S.sets[1]+1, legNo = S.legs[0]+S.legs[1]+1;
-  $('#lvl').textContent = S.over ? 'Spiel beendet' : `Satz ${setNo} · Leg ${legNo}`;
-  $('#rules').textContent = rulesText(c);
-  $('#undoBtn').disabled = !H.length;
+  $('#lvl').textContent = S.over ? 'Spiel beendet' : (c.sets>1 ? `Satz ${setNo} · Leg ${legNo}` : `Leg ${legNo}`);
+  $('#rules').textContent = (c.tm ? `Scheibe ${c.tm.board} · ${c.tm.label} · ` : '') + rulesText(c);
+  $('#undoBtn').disabled = !H.length || !!(c.tm && (c.tm.sent || c.tm.queued));
+  $('#newBtn').innerHTML = c.tm ? '<svg class="i"><use href="#i-back"/></svg><span>Übersicht</span>' : '<svg class="i"><use href="#i-new"/></svg><span>Neues Spiel</span>';
+  $('#newBtn').title = c.tm ? 'Zur Übersicht der Scheibe (das Spiel bleibt gespeichert)' : 'Neues Spiel einrichten';
 
   const starter = (c.first + S.legIdx) % 2;
   $('#teams').innerHTML = [0,1].map(i=>{
@@ -557,7 +818,7 @@ function render(){
       <h2 class="title">${esc(c.names[i])}</h2>
       ${pl}
       <div class="meta num">
-        <div>Sätze <b>${S.sets[i]}</b></div>
+        ${c.sets>1 ? `<div>Sätze <b>${S.sets[i]}</b></div>` : ''}
         <div>Legs <b>${S.legs[i]}</b></div>
         ${starter===i ? '<div class="throw">Anwurf</div>' : ''}
       </div>
@@ -587,6 +848,7 @@ function render(){
 
   $('#pad').classList.toggle('off', !!(S.pending || S.over));
   renderModal();
+  pushLive();
 }
 
 function buildPad(){
@@ -614,7 +876,17 @@ function renderModal(){
   if(!S.pending || $('#game').classList.contains('hidden')){ m.classList.add('hidden'); return; }
   const {w,t} = S.pending, n = esc(S.cfg.names[w]);
   let h;
-  if(t==='match'){
+  const tm = S.cfg.tm;
+  if(t==='match' && tm){
+    const st = tm.sent ? '<p class="note ok" style="text-align:left;font-size:17px;margin:0 0 20px">Resultat gesendet. Der Turnierplan ist aktualisiert.</p>'
+      : tm.err ? `<p class="note err" style="text-align:left;font-size:17px;margin:0 0 20px">${esc(tm.err)}</p>` : '';
+    h = `<h2 class="title">${n} gewinnt</h2><p class="num">Endstand <b>${endTxt()}</b></p>${st}
+      <div class="btns three">${(tm.sent || tm.queued)
+        ? `<button class="btn sec" id="mStats">Statistik</button>${tm.queued ? '<button class="btn sec" id="mSend">Erneut senden</button>' : ''}<button class="btn" id="mBoard" style="${tm.queued?'':'grid-column:span 2'}">Nächstes Spiel</button>`
+        : tm.err
+        ? `<button class="btn sec" id="mUndo">Korrigieren</button><button class="btn sec" id="mBoard">Zur Scheibe</button><button class="btn" id="mSend" ${tm.sending?'disabled':''}>${tm.sending?'Sendet …':'Erneut senden'}</button>`
+        : `<button class="btn sec" id="mUndo">Korrigieren</button><button class="btn sec" id="mStats">Statistik</button><button class="btn" id="mSend" ${tm.sending?'disabled':''}>${tm.sending?'Sendet …':'Resultat senden'}</button>`}</div>`;
+  } else if(t==='match'){
     h = `<h2 class="title">${n} gewinnt</h2><p class="num">Endstand <b>${S.sets[0]} : ${S.sets[1]}</b> Sätze</p>
       <div class="btns three"><button class="btn sec" id="mUndo">Korrigieren</button><button class="btn sec" id="mNew">Neues Spiel</button><button class="btn" id="mStats">Statistik</button></div>`;
   } else {
@@ -623,10 +895,12 @@ function renderModal(){
       <div class="btns"><button class="btn sec" id="mUndo">Korrigieren</button><button class="btn" id="mNext">Nächstes Leg</button></div>`;
   }
   card.innerHTML = h; m.classList.remove('hidden');
-  $('#mUndo').onclick = undo;
+  if($('#mUndo')) $('#mUndo').onclick = undo;
   if($('#mNext')){ $('#mNext').onclick = nextLeg; $('#mNext').focus(); }
   if($('#mNew')) $('#mNew').onclick = showSetup;
   if($('#mStats')){ $('#mStats').onclick = showStats; $('#mStats').focus(); }
+  if($('#mSend')){ $('#mSend').onclick = sendResult; if(!tm.queued) $('#mSend').focus(); }
+  if($('#mBoard')){ $('#mBoard').onclick = showBoard; if(tm && (tm.sent || tm.queued)) $('#mBoard').focus(); }
 }
 
 /* ---------- Statistik ---------- */
@@ -735,24 +1009,869 @@ function renderStats(){
   document.querySelectorAll('.hsel button').forEach(b=>b.onclick=()=>{ hmSel[+b.dataset.t] = +b.dataset.p; renderStats(); });
 }
 
+/* ================= Turnier ================= */
+// Versionskontrolle: bei jedem Update erhöhen. Offene Seiten merken so, dass es eine neue Version gibt.
+const APP_VERSION = '2026-11-24.4';
+let newVersion = false;
+async function checkVersion(){
+  try{
+    const t = await (await fetch(location.pathname + '?v=' + Date.now(), {cache:'no-store'})).text();
+    const m = t.match(/const APP_VERSION = '([^']+)'/);
+    if(!m || m[1]===APP_VERSION) return;
+    newVersion = true;
+    // Auf Übersichtsseiten gefahrlos neu laden; im Spiel nur Hinweis (Spielstand bleibt ohnehin gespeichert)
+    if(['home','plan','bview'].includes(curView()) && !document.querySelector('#bdForm')) location.reload();
+    else $('#verBar').classList.remove('hidden');
+  }catch(e){}
+}
+setInterval(checkVersion, 60000);
+
+const SB_URL = 'https://bpdssqlalhclrljlxsmp.supabase.co';
+const SB_KEY = 'sb_publishable_RVD0ycrhKFvfJFk0rpDuLQ_AjI6WCCA';
+const BKEY = 'dart-zaehler-scheibe-v1', AKEY = 'dart-zaehler-admin-v1', QKEY = 'dart-zaehler-queue-v1';
+const GRPS = 'ABCDEFGH'.split('');
+const STAGES = ['R16','QF','SF','F'];
+const STAGE = {G:'Gruppe', R16:'Achtelfinal', QF:'Viertelfinal', SF:'Halbfinal', F:'Final'};
+const STAGE_PL = {R16:'Achtelfinals', QF:'Viertelfinals', SF:'Halbfinals', F:'Final'};
+const VIEWS = ['home','bview','plan','admin','setup','game','stats'];
+const lsGet = (k,d) => { try{ const v = JSON.parse(localStorage.getItem(k)); return v==null ? d : v; }catch(e){ return d; } };
+const lsSet = (k,v) => { try{ v==null ? localStorage.removeItem(k) : localStorage.setItem(k, JSON.stringify(v)); }catch(e){} };
+
+let D = {config:null, teams:[], matches:[]};
+let syncState = {ok:null, at:0};
+let BD = lsGet(BKEY, null);       // gewählte Scheibe: {board, code}
+let sess = lsGet(AKEY, null);     // Admin-Sitzung
+let isAdm = false;
+let SETUP_TM = null;              // übernommenes Turnierspiel, das gerade eingerichtet wird
+let bvMsg = null;                 // Hinweis in der Scheiben-Ansicht
+let planFrom = 'home';
+
+/* ---------- Server ---------- */
+let refreshing = null;
+// Mehrere Tabs teilen sich die Anmeldung: immer zuerst den neusten Stand aus localStorage übernehmen
+function adoptStored(){
+  const st = lsGet(AKEY, null);
+  if(st && sess && st.refresh_token !== sess.refresh_token && st.expires_at >= sess.expires_at){ sess = st; return true; }
+  return false;
+}
+async function doRefresh(){
+  if(!sess) return;
+  adoptStored();
+  if(sess.expires_at - 60 > Date.now()/1000) return;   // ein anderer Tab hat schon erneuert
+  try{
+    const r = await fetch(SB_URL+'/auth/v1/token?grant_type=refresh_token', {method:'POST', headers:{apikey:SB_KEY,'Content-Type':'application/json'}, body:JSON.stringify({refresh_token:sess.refresh_token})});
+    if(r.ok){ setSess(await r.json()); return; }
+    if(adoptStored()) return;                              // gleichzeitig in anderem Tab erneuert
+    if(r.status===400 || r.status===401 || r.status===403) logout();   // Anmeldung wirklich ungültig
+    // bei 429/5xx: angemeldet bleiben und beim nächsten Mal erneut versuchen
+  }catch(e){}
+}
+async function freshToken(){
+  if(!sess) return null;
+  adoptStored();
+  if(sess.expires_at - 60 > Date.now()/1000) return sess.access_token;
+  if(!refreshing) refreshing = (navigator.locks ? navigator.locks.request('dartzaehler-auth', doRefresh) : doRefresh()).finally(()=>{ refreshing = null; });
+  await refreshing;
+  return sess ? sess.access_token : null;
+}
+function setSess(d){
+  sess = {access_token:d.access_token, refresh_token:d.refresh_token,
+    expires_at:d.expires_at || Math.floor(Date.now()/1000)+(d.expires_in||3600),
+    email:(d.user && d.user.email) || (sess && sess.email) || ''};
+  lsSet(AKEY, sess);
+}
+function logout(){ sess = null; isAdm = false; lsSet(AKEY, null); }
+async function api(path, o={}){
+  const h = {apikey:SB_KEY, 'Content-Type':'application/json'};
+  const tok = await freshToken(); if(tok) h.Authorization = 'Bearer '+tok;
+  let r;
+  try{ r = await fetch(SB_URL+path, {method:o.method||'GET', headers:h, body:o.body!==undefined ? JSON.stringify(o.body) : undefined, cache:'no-store'}); }
+  catch(e){ const er = new Error('Keine Verbindung zum Server'); er.net = true; throw er; }
+  const txt = await r.text(); let d = null;
+  try{ d = txt ? JSON.parse(txt) : null; }catch(e){}
+  if(r.status===401 && sess && !o.retried){ sess.expires_at = 0; return api(path, Object.assign({}, o, {retried:true})); }
+  if(!r.ok){
+    const er = new Error((d && (d.message || d.error_description || d.msg)) || ('Fehler '+r.status));
+    er.status = r.status; if(r.status >= 500 || r.status === 0) er.net = true;
+    throw er;
+  }
+  return d;
+}
+const rpc = (fn, args) => api('/rest/v1/rpc/'+fn, {method:'POST', body:args||{}});
+
+let loading = null;
+function refresh(){
+  if(loading) return loading;
+  loading = (async()=>{
+    try{
+      const [c,t,m] = await Promise.all([
+        api('/rest/v1/config?select=*'),
+        api('/rest/v1/teams?select=id,name,grp,pos&order=grp.asc.nullslast,pos.asc,id.asc'),
+        api('/rest/v1/matches?select=*&order=seq.asc,id.asc')
+      ]);
+      D = {config:c[0] || null, teams:t, matches:m};
+      syncState = {ok:true, at:Date.now()};
+    }catch(e){ syncState = {ok:false, at:syncState.at}; }
+    await flushQueue();
+    loading = null;
+    paintSync(); renderLive();
+  })();
+  return loading;
+}
+function paintSync(){
+  const t = syncState.at ? new Date(syncState.at).toLocaleTimeString('de-CH') : '';
+  document.querySelectorAll('.sync').forEach(el=>{
+    el.classList.toggle('err', syncState.ok === false);
+    el.textContent = syncState.ok === false ? 'Keine Verbindung' + (t ? ' · Stand '+t : '') : (t ? 'Aktualisiert '+t : 'Lädt …');
+  });
+  if(D.config && D.config.title) document.querySelectorAll('.tTitle').forEach(el=>el.textContent = D.config.title);
+}
+const curView = () => VIEWS.find(v=>!$('#'+v).classList.contains('hidden'));
+function renderLive(){
+  const v = curView();
+  if(v==='plan') renderPlan();
+  else if(v==='admin') renderAdmin(false);
+  else if(v==='bview') renderBoard(false);
+  else if(v==='home') renderHome();
+}
+setInterval(()=>{
+  if(document.hidden) return;
+  if(['game','stats','setup'].includes(curView())){ flushQueue(); return; }
+  refresh();
+}, 5000);
+document.addEventListener('visibilitychange', ()=>{ if(!document.hidden && ['plan','admin','bview','home'].includes(curView())) refresh(); });
+
+/* ---------- Hilfen ---------- */
+const team = id => D.teams.find(t=>t.id===id);
+const hasT = (m,s) => !!team(m['team_'+s]);
+const tn = (m,s) => { const t = team(m['team_'+s]); return t ? t.name : (m['src_'+s] || 'Noch offen'); };
+const boardsN = () => (D.config && D.config.boards) || 8;
+const DEF_FMT = {start:501, sets:1, legs:2, dout:true};
+const fmtOf = m => (D.config && (m.stage==='G' ? D.config.group_fmt : D.config.ko_fmt)) || DEF_FMT;
+const fmtTxt = f => `${f.start} · ${f.sets>1 ? 'Erster auf '+f.sets+' Sätze à ' : 'Erster auf '}${f.legs} ${f.legs===1?'Leg':'Legs'} · ${f.dout?'Double-Out':'Straight-Out'}`;
+const mLabel = m => m.stage==='G' ? 'Gruppe '+m.grp : STAGE[m.stage] + (m.stage==='F' ? '' : ' '+m.slot);
+const hhmm = ts => ts ? new Date(ts).toLocaleTimeString('de-CH', {hour:'2-digit', minute:'2-digit'}) : '';
+const useSets = m => fmtOf(m).sets > 1;
+const winA = m => m.status==='done' && m.winner!=null && m.winner===m.team_a;
+const winB = m => m.status==='done' && m.winner!=null && m.winner===m.team_b;
+function sideScore(m, s){
+  const i = s==='a' ? 0 : 1;
+  if(m.status==='done') return useSets(m) ? m['sets_'+s] : m['legs_'+s];
+  if(m.status==='live' && m.live) return useSets(m) ? m.live.sets[i] : m.live.legsTot[i];
+  return '';
+}
+function scoreTxt(m){
+  if(m.status==='done' || (m.status==='live' && m.live)) return `${sideScore(m,'a')} : ${sideScore(m,'b')}`;
+  return '–';
+}
+function statusTxt(m){
+  if(m.status==='live') return 'Scheibe '+m.board+' · läuft';
+  if(m.status==='done') return 'Beendet' + (m.board ? ' · Scheibe '+m.board : '');
+  if(!m.released) return 'Nicht freigegeben';
+  if(!m.team_a || !m.team_b) return 'Wartet auf Teams';
+  return m.plan_board ? 'Scheibe '+m.plan_board : 'Offen';
+}
+function standings(g){
+  const ms = D.matches.filter(m=>m.stage==='G' && m.grp===g);
+  const R = new Map();
+  D.teams.filter(t=>t.grp===g).forEach(t=>R.set(t.id, {t, sp:0, s:0, n:0, lf:0, la:0, p:0}));
+  ms.forEach(m=>{
+    if(m.status!=='done') return;
+    const A = R.get(m.team_a), B = R.get(m.team_b); if(!A || !B) return;
+    A.sp++; B.sp++;
+    A.lf += m.legs_a||0; A.la += m.legs_b||0; B.lf += m.legs_b||0; B.la += m.legs_a||0;
+    if(m.winner===m.team_a){ A.s++; B.n++; A.p += 2; } else { B.s++; A.n++; B.p += 2; }
+  });
+  const h2h = (a,b) => {
+    const m = ms.find(m=>m.status==='done' && ((m.team_a===a.t.id && m.team_b===b.t.id) || (m.team_a===b.t.id && m.team_b===a.t.id)));
+    return m ? (m.winner===a.t.id ? -1 : 1) : 0;
+  };
+  const rows = [...R.values()].sort((a,b)=> b.p-a.p || (b.lf-b.la)-(a.lf-a.la) || b.lf-a.lf || h2h(a,b) || a.t.name.localeCompare(b.t.name,'de'));
+  return {rows, ms, done: ms.length>0 && ms.every(m=>m.status==='done')};
+}
+const usedGroups = () => GRPS.filter(g=>D.teams.some(t=>t.grp===g));
+
+// Gleiche Regel wie beim Übernehmen in der Datenbank: nur Spiele dieser Scheibe, dann vom Admin auf «beliebig» gesetzte
+function playable(){
+  const busy = new Set();
+  D.matches.forEach(m=>{ if(m.status==='live'){ busy.add(m.team_a); busy.add(m.team_b); } });
+  return D.matches.filter(m=>m.status==='open' && m.released && m.team_a && m.team_b && !busy.has(m.team_a) && !busy.has(m.team_b));
+}
+const prio = (m,b) => m.plan_board===b ? 0 : 1;
+const pickFor = (b, cand) => cand.filter(m=>m.plan_board===b || m.plan_board==null).sort((x,y)=>prio(x,b)-prio(y,b) || x.seq-y.seq || x.id-y.id)[0] || null;
+function forecast(){
+  const n = boardsN(), live = {}, res = {}, after = {}, taken = new Set();
+  let cand = playable();
+  D.matches.forEach(m=>{ if(m.status==='live') live[m.board] = m; });
+  for(let b=1;b<=n;b++){
+    if(live[b]) continue;
+    const m = pickFor(b, cand.filter(m=>!taken.has(m.team_a) && !taken.has(m.team_b)));
+    if(m){ res[b] = m; taken.add(m.team_a); taken.add(m.team_b); cand = cand.filter(x=>x!==m); }
+  }
+  const used = new Set(Object.values(res).map(m=>m.id));
+  for(let b=1;b<=n;b++){
+    if(!live[b]) continue;
+    const m = D.matches.find(m=>m.status==='open' && m.released && m.plan_board===b && !used.has(m.id));
+    if(m){ after[b] = m; used.add(m.id); }
+  }
+  return {live, res, after};
+}
+
+/* ---------- Turnierplan ---------- */
+let plTab = 'boards';
+const PTABS = [['boards','Scheiben'],['groups','Gruppen'],['ko','K.o.-Phase'],['all','Alle Spiele']];
+const tabsHtml = (list, cur) => list.map(([k,l])=>`<button role="tab" data-t="${k}" class="${k===cur?'on':''}" aria-selected="${k===cur}">${l}</button>`).join('');
+function renderPlan(){
+  $('#plTabs').innerHTML = tabsHtml(PTABS, plTab);
+  $('#plBody').innerHTML = planBody(plTab, false);
+}
+$('#plTabs').onclick = e => { const b = e.target.closest('button'); if(!b) return; plTab = b.dataset.t; renderPlan(); };
+function planBody(tab, adm){
+  if(!D.config) return `<p class="empty">${syncState.ok===false ? 'Keine Verbindung zum Server.' : 'Lädt …'}</p>`;
+  if(!D.matches.length) return `<p class="empty">Der Spielplan ist noch nicht erstellt.${adm ? ' Unter «Einrichten» die Teams erfassen, auslosen und den Spielplan erstellen.' : ''}</p>`;
+  const f = {boards:pBoards, groups:pGroups, ko:pKo, all:pAll}[tab] || pBoards;
+  return offlineNote() + `<div class="${adm?'adm':''}">${f()}</div>`;
+}
+const offlineNote = () => syncState.ok===false ? `<p class="note err">Keine Verbindung zum Server. Prüfe das WLAN. Angezeigt wird der Stand von ${new Date(syncState.at||Date.now()).toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})} Uhr.</p>` : '';
+function progress(){
+  const tot = D.matches.length, done = D.matches.filter(m=>m.status==='done').length;
+  return `<div class="prog num"><span><b>${done}</b> von ${tot} Spielen beendet</span><div class="b"><i style="width:${tot ? done/tot*100 : 0}%"></i></div></div>`;
+}
+function mrow(m, full){
+  const cls = m.status==='live' ? 'live' : m.status==='done' ? 'done' : '';
+  return `<li class="mrow ${full?'full':''} ${cls}" data-id="${m.id}">${full ? `<span class="lb">${mLabel(m)}</span>` : ''}<span class="a ${winA(m)?'w':''}">${esc(tn(m,'a'))}</span><span class="r num">${scoreTxt(m)}</span><span class="b ${winB(m)?'w':''}">${esc(tn(m,'b'))}</span><span class="s">${statusTxt(m)}</span></li>`;
+}
+function liveLine(m){
+  const L = m.live;
+  if(!L) return `<div class="rest">Wird eingerichtet</div>`;
+  const s = useSets(m)
+    ? `<div class="ls num">${L.sets[0]} : ${L.sets[1]}<small>Sätze</small> &nbsp; ${L.legs[0]} : ${L.legs[1]}<small>Legs</small></div>`
+    : `<div class="ls num">${L.legsTot[0]} : ${L.legsTot[1]}<small>Legs</small></div>`;
+  return s + (L.rest ? `<div class="rest num">Rest ${L.rest[0]} : ${L.rest[1]}</div>` : '');
+}
+function pBoards(){
+  const F = forecast();
+  let h = progress() + `<div class="boards">`;
+  for(let b=1;b<=boardsN();b++){
+    const m = F.live[b];
+    if(m){
+      const nx = F.after[b];
+      h += `<div class="bcard live" data-id="${m.id}"><h3>Scheibe ${b}<span>Läuft seit ${hhmm(m.started_at)}</span></h3>
+        <div class="vs">${esc(tn(m,'a'))} – ${esc(tn(m,'b'))}<i>${mLabel(m)}</i></div>${liveLine(m)}
+        ${nx ? `<div class="nx">Danach: <b>${esc(tn(nx,'a'))} – ${esc(tn(nx,'b'))}</b></div>` : ''}</div>`;
+    } else {
+      const nx = F.res[b];
+      h += `<div class="bcard" ${nx ? `data-id="${nx.id}"` : ''}><h3>Scheibe ${b}<span>Frei</span></h3>
+        ${nx ? `<div class="rest">Als Nächstes</div><div class="vs">${esc(tn(nx,'a'))} – ${esc(tn(nx,'b'))}<i>${mLabel(nx)}</i></div>` : `<div class="free">Kein Spiel bereit</div>`}</div>`;
+    }
+  }
+  h += `</div>`;
+  const shown = new Set([...Object.values(F.res), ...Object.values(F.after)].map(m=>m.id));
+  const queue = D.matches.filter(m=>m.status==='open' && m.released && m.team_a && m.team_b && !shown.has(m.id)).slice(0,12);
+  const recent = D.matches.filter(m=>m.status==='done').sort((a,b)=>(b.finished_at||'').localeCompare(a.finished_at||'')).slice(0,12);
+  h += `<div class="grid2">
+    <div><h2 class="h2" style="margin-top:30px">Warteschlange</h2>${queue.length ? `<ul class="mlist">${queue.map(m=>mrow(m,true)).join('')}</ul>` : '<p class="hint">Keine weiteren Spiele bereit.</p>'}</div>
+    <div><h2 class="h2" style="margin-top:30px">Zuletzt beendet</h2>${recent.length ? `<ul class="mlist">${recent.map(m=>mrow(m,true)).join('')}</ul>` : '<p class="hint">Noch keine Resultate.</p>'}</div></div>`;
+  return h;
+}
+const openG = new Set();
+document.addEventListener('toggle', e => { const d = e.target; if(d.matches && d.matches('details.gm')) d.open ? openG.add(d.dataset.g) : openG.delete(d.dataset.g); }, true);
+function pGroups(){
+  return `<div class="groups">` + usedGroups().map(g=>{
+    const st = standings(g);
+    return `<section class="gbox"><h2 class="title">Gruppe ${g}</h2>
+      <table class="tab num"><thead><tr><th class="c1">#</th><th class="c2">Team</th><th class="cn">Sp</th><th class="cn xs">S</th><th class="cn xs">N</th><th class="cl xs">Legs</th><th class="cn">+/–</th><th class="cp">Pkt</th></tr></thead><tbody>
+      ${st.rows.map((r,i)=>`<tr class="${i<2?'q':''}"><td class="c1">${i+1}</td><td class="c2">${esc(r.t.name)}</td><td class="cn">${r.sp}</td><td class="cn xs">${r.s}</td><td class="cn xs">${r.n}</td><td class="cl xs">${r.lf}:${r.la}</td><td class="cn">${r.lf-r.la>0?'+':''}${r.lf-r.la}</td><td class="cp">${r.p}</td></tr>`).join('')}
+      </tbody></table>
+      <details class="gm" data-g="${g}" ${openG.has(g)?'open':''}><summary>Spiele <span>${st.ms.filter(m=>m.status==='done').length} von ${st.ms.length} gespielt${st.ms.some(m=>m.status==='live') ? ' · '+st.ms.filter(m=>m.status==='live').length+' läuft' : ''}${st.done ? ' · abgeschlossen' : ''}</span></summary>
+      <ul class="mlist">${st.ms.map(m=>mrow(m,false)).join('')}</ul></details></section>`;
+  }).join('') + `</div><p class="hint">Sieg = 2 Punkte. Bei Punktgleichheit entscheidet die Leg-Differenz, dann die Anzahl gewonnener Legs, dann die Direktbegegnung. Die ersten zwei jeder Gruppe (gelb markiert) kommen in die K.o.-Phase.</p>`;
+}
+function kmBox(m){
+  const line = (s, w) => `<div class="t ${w?'w':''} ${hasT(m,s)?'':'tbd'}"><span>${esc(tn(m,s))}</span><b class="num">${sideScore(m,s)}</b></div>`;
+  const cls = m.status==='live' ? 'live' : (m.status==='open' && !m.released) ? 'hold' : '';
+  return `<div class="km ${cls}" data-id="${m.id}">${line('a',winA(m))}${line('b',winB(m))}<div class="s">${statusTxt(m)}</div></div>`;
+}
+function pKo(){
+  const ko = D.matches.filter(m=>m.stage!=='G');
+  if(!ko.length) return `<p class="empty">Die K.o.-Phase wird erstellt, sobald alle Gruppenspiele beendet sind.</p>`;
+  return `<div class="bracket">` + STAGES.map(st=>{
+    const ms = ko.filter(m=>m.stage===st).sort((a,b)=>a.slot-b.slot);
+    return `<div class="bcol"><h3>${STAGE_PL[st]}</h3><div class="ms">${ms.map(kmBox).join('')}</div></div>`;
+  }).join('') + `</div>`;
+}
+function pAll(){
+  const g = D.matches.filter(m=>m.stage==='G'), k = D.matches.filter(m=>m.stage!=='G');
+  return progress() + `<h2 class="h2">Gruppenphase</h2><ul class="mlist">${g.map(m=>mrow(m,true)).join('')}</ul>`
+    + (k.length ? `<h2 class="h2">K.o.-Phase</h2><ul class="mlist">${k.map(m=>mrow(m,true)).join('')}</ul>` : '');
+}
+
+/* ---------- Start & Navigation ---------- */
+function setHash(h){ try{ history.replaceState(null, '', h ? '#'+h : location.pathname + location.search); }catch(e){} }
+function renderHome(){
+  const ms = D.matches, done = ms.filter(m=>m.status==='done').length, live = ms.filter(m=>m.status==='live').length;
+  $('#hStatus').innerHTML = syncState.ok===false ? '<span class="sync err">Keine Verbindung zum Server</span>'
+    : !ms.length ? '' : done===ms.length ? 'Turnier beendet' : `Turnier läuft · ${live} ${live===1?'Spiel':'Spiele'} an den Scheiben · ${done} von ${ms.length} beendet`;
+  $('#tCountSub').textContent = BD
+    ? `An Scheibe ${BD.board} die Turnierspiele zählen und die Resultate direkt senden`
+    : 'An einer Scheibe die Turnierspiele zählen und die Resultate direkt senden';
+}
+function showHome(){ setHash(''); showView('home'); renderHome(); paintSync(); refresh(); }
+function showBoard(){ setHash('zaehlen'); showView('bview'); renderBoard(true); paintSync(); refresh(); }
+function showPlan(from){ if(from) planFrom = from; setHash('plan'); showView('plan'); renderPlan(); paintSync(); refresh(); }
+function showAdmin(){ setHash('admin'); showView('admin'); renderAdmin(true); paintSync(); refresh(); if(sess) checkAdmin(); }
+function showFree(){
+  SETUP_TM = null; setHash(''); showView('setup'); setupMode(false);
+  const free = S && !S.cfg.tm;
+  $('#resumeBtn').classList.toggle('hidden', !(free && !S.over));
+  fillSetup(free ? S.cfg : {names:['Team 1','Team 2'], sets:1, legs:3, start:501, first:0, dout:true, plRaw:[[],[]]});
+}
+$('#tCount').onclick = showBoard;
+$('#tPlan').onclick = () => showPlan('home');
+$('#tFree').onclick = showFree;
+$('#hAdmin').onclick = showAdmin;
+$('#bvHome').onclick = showHome;
+$('#bvPlan').onclick = () => showPlan('bview');
+$('#plBack').onclick = () => planFrom==='bview' ? showBoard() : showHome();
+$('#adHome').onclick = showHome;
+$('#adOut').onclick = () => { logout(); adCode = null; renderAdmin(true); };
+
+/* ---------- Zählen an einer Scheibe ---------- */
+const tmOpen = () => S && S.cfg.tm && !(S.over && (S.cfg.tm.sent || S.cfg.tm.queued));
+function renderBoard(force){
+  const el = $('#bvBody');
+  if(!BD || !BD.code){
+    if(!force && el.querySelector('#bdForm')) return;
+    const n = boardsN();
+    el.innerHTML = `<h1 class="title">Scheibe wählen</h1><p class="lead">An welcher Scheibe zählst du?</p>
+      <form id="bdForm" class="grid2" autocomplete="off">
+        ${BD ? `<p class="note err" style="grid-column:1/-1;margin:0">Der Zähler-Code wurde geändert. Bitte den neuen Code von der Turnierleitung eingeben.</p>` : ''}
+        <div class="f"><label for="bdNo">Scheibe</label><select id="bdNo">${Array.from({length:Math.max(n, BD ? BD.board : 0)},(_,i)=>`<option value="${i+1}" ${BD && BD.board===i+1 ? 'selected' : ''}>Scheibe ${i+1}</option>`).join('')}</select></div>
+        <div class="f"><label for="bdCode">Zähler-Code <small>(von der Turnierleitung)</small></label><input id="bdCode" type="password" autocomplete="off"></div>
+        <p class="note err hidden" id="bdErr" style="grid-column:1/-1;margin:0"></p>
+        <button class="btn" style="grid-column:1/-1">Weiter <svg class="i"><use href="#i-play"/></svg></button>
+      </form>`;
+    $('#bdForm').onsubmit = async e => {
+      e.preventDefault();
+      const code = $('#bdCode').value.trim(), board = +$('#bdNo').value;
+      const err = t => { $('#bdErr').textContent = t; $('#bdErr').classList.remove('hidden'); };
+      try{ if(!(await rpc('check_code', {p_code:code}))) return err('Der Zähler-Code stimmt nicht.'); }
+      catch(e2){ return err(e2.message); }
+      BD = {board, code}; lsSet(BKEY, BD); bvMsg = null; renderBoard(true); refresh();
+    };
+    return;
+  }
+  const b = BD.board, tm = S && S.cfg.tm;
+  const live = D.matches.find(m=>m.status==='live' && m.board===b);
+  let h = (syncState.ok===false ? `<p class="note err">Keine Verbindung zum Server. Prüfe das WLAN. Ein laufendes Spiel kannst du weiter zählen, das Resultat wird nachgesendet.</p>` : '') + `<div class="bnum num">${b}</div><div class="bsub">Scheibe</div>`;
+  if(bvMsg) h += `<p class="note ${bvMsg.err?'err':'ok'}">${esc(bvMsg.t)}</p>`;
+  const q = lsGet(QKEY, []);
+  if(q.length) h += `<p class="note err">${q.length===1 ? 'Ein Resultat ist' : q.length+' Resultate sind'} noch nicht übermittelt. Es wird automatisch gesendet, sobald die Verbindung wieder steht.</p>`;
+  if(tmOpen()){
+    h += `<div class="next"><small>${S.over ? 'Spiel beendet – Resultat noch nicht gesendet' : 'Laufendes Spiel'} · ${esc(tm.label)}</small>
+      <div class="vs">${esc(S.cfg.names[0])}<em>${S.over ? esc(endTxt()) : 'gegen'}</em>${esc(S.cfg.names[1])}</div>
+      ${tm.err ? `<div class="mt" style="color:var(--red)">${esc(tm.err)}</div>` : ''}</div>
+      <div class="actions">${S.over ? `<button class="btn" id="bvSend">Resultat senden</button>` : ''}<button class="btn ${S.over?'sec':''}" id="bvResume">${S.over ? 'Zum Spiel' : 'Spiel fortsetzen'} <svg class="i"><use href="#i-play"/></svg></button></div>
+      <p class="center"><button class="link" id="bvDrop">Spiel auf diesem Laptop verwerfen</button></p>`;
+  } else if(live){
+    h += `<div class="next"><small>Übernommen · ${mLabel(live)}</small><div class="vs">${esc(tn(live,'a'))}<em>gegen</em>${esc(tn(live,'b'))}</div><div class="mt">${fmtTxt(fmtOf(live))}</div></div>
+      <div class="actions"><button class="btn" id="bvSetup">Spiel einrichten <svg class="i"><use href="#i-play"/></svg></button><button class="btn sec" id="bvGive">Spiel zurückgeben</button></div>`;
+  } else {
+    const nx = D.config ? forecast().res[b] : null;
+    h += nx
+      ? `<div class="next"><small>Nächstes Spiel · ${mLabel(nx)}</small><div class="vs">${esc(tn(nx,'a'))}<em>gegen</em>${esc(tn(nx,'b'))}</div><div class="mt">${fmtTxt(fmtOf(nx))}</div></div>
+         <div class="actions"><button class="btn" id="bvClaim">Spiel übernehmen <svg class="i"><use href="#i-play"/></svg></button></div>`
+      : `<div class="next"><small>Nächstes Spiel</small><div class="vs" style="font-size:24px">${!D.config ? (syncState.ok===false ? 'Keine Verbindung zum Server' : 'Lädt …') : `An Scheibe ${b} ist im Moment kein Spiel bereit`}</div><div class="mt">${D.config ? esc(waitReason(b)) : ''}</div><div class="mt">Sobald ein Spiel für diese Scheibe bereit ist, erscheint es hier automatisch.</div></div>`;
+  }
+  h += `<p class="center" style="margin-top:18px"><button class="link" id="bvSwitch">Scheibe wechseln</button></p>`;
+  el.innerHTML = h;
+  const on = (id, fn) => { const x = $('#'+id); if(x) x.onclick = fn; };
+  on('bvResume', showGame);
+  on('bvSend', sendResult);
+  on('bvSetup', () => openTmSetup(live));
+  on('bvGive', async () => {
+    if(!confirm('Spiel zurückgeben? Es wird dann wieder für alle Scheiben frei.')) return;
+    try{ await rpc('unclaim_match', {p_code:BD.code, p_board:b, p_match:live.id}); bvMsg = null; }
+    catch(e){ codeCheck(e); bvMsg = {t:e.message, err:true}; }
+    refresh();
+  });
+  on('bvClaim', async e => {
+    e.currentTarget.disabled = true;
+    try{
+      const m = await rpc('claim_match', {p_code:BD.code, p_board:b});
+      if(!m || m.id == null){ bvMsg = {t:'Das Spiel ist nicht mehr frei. Hier ist das nächste.', err:true}; await refresh(); return; }
+      bvMsg = null;
+      const i = D.matches.findIndex(x=>x.id===m.id); if(i>=0) D.matches[i] = m; else D.matches.push(m);
+      openTmSetup(m);
+    }catch(e2){ codeCheck(e2); bvMsg = {t:e2.message, err:true}; renderBoard(true); }
+  });
+  on('bvDrop', () => {
+    if(!confirm('Dieses Spiel auf diesem Laptop verwerfen? Das Resultat wird NICHT gesendet.')) return;
+    S = null; H = []; save(); renderBoard(true);
+  });
+  on('bvSwitch', () => {
+    if(tmOpen() && !confirm('Auf diesem Laptop läuft noch ein Turnierspiel. Trotzdem die Scheibe wechseln?')) return;
+    BD = null; lsSet(BKEY, null); bvMsg = null; renderBoard(true);
+  });
+}
+// Code wurde von der Turnierleitung geändert: Scheibe behalten, Code neu verlangen
+function codeCheck(e){
+  if(!/Zähler-Code/.test(e.message || '') || !BD) return false;
+  BD = {board:BD.board, code:''}; lsSet(BKEY, BD); return true;
+}
+// Warum an dieser Scheibe gerade nichts kommt
+function waitReason(b){
+  const mine = D.matches.filter(m=>m.status==='open' && m.plan_board===b);
+  const busyTeams = new Set(); D.matches.forEach(m=>{ if(m.status==='live'){ busyTeams.add(m.team_a); busyTeams.add(m.team_b); } });
+  const busy = mine.find(m=>m.released && m.team_a && m.team_b);
+  if(busy) return `Als Nächstes hier: ${tn(busy,'a')} – ${tn(busy,'b')} (${mLabel(busy)}). Es startet, sobald ${busyTeams.has(busy.team_a) && busyTeams.has(busy.team_b) ? 'beide Teams' : busyTeams.has(busy.team_a) ? tn(busy,'a') : tn(busy,'b')} das laufende Spiel an einer anderen Scheibe beendet ${busyTeams.has(busy.team_a) && busyTeams.has(busy.team_b) ? 'haben' : 'hat'}.`;
+  const waitT = mine.find(m=>m.released);
+  if(waitT) return `Als Nächstes hier: ${mLabel(waitT)}. Es wartet, bis beide Teams feststehen.`;
+  const held = mine.find(m=>!m.released);
+  if(held) return `Als Nächstes hier: ${mLabel(held)}. Es erscheint, sobald die Turnierleitung ${held.stage==='F' ? 'den Final' : 'die '+STAGE_PL[held.stage]} freigibt.`;
+  const any = D.matches.some(m=>m.status!=='done');
+  return any ? 'An dieser Scheibe stehen keine weiteren Spiele an.' : 'Das Turnier ist beendet.';
+}
+function endTxt(){
+  const lt = [0,1].map(p=>S.lw.filter(w=>w.p===p).length);
+  return S.cfg.sets > 1 ? `${S.sets[0]} : ${S.sets[1]} Sätze` : `${lt[0]} : ${lt[1]} Legs`;
+}
+function openTmSetup(m){
+  const f = fmtOf(m);
+  SETUP_TM = {id:m.id, board:BD.board, label:mLabel(m), stage:m.stage};
+  showView('setup');
+  fillSetup({names:[tn(m,'a'), tn(m,'b')], sets:f.sets, legs:f.legs, start:f.start, first:0, dout:f.dout, plRaw:[[],[]]});
+  [0,1].forEach(t=>renderPlayers(t, []));
+  setupMode(true, m);
+}
+function setupMode(on, m){
+  $('#n1').readOnly = $('#n2').readOnly = on;
+  ['#sets','#legs','#dout'].forEach(x=>$(x).disabled = on);
+  document.querySelectorAll('#start button').forEach(b=>b.disabled = on);
+  // Turnierspiel: nur das Nötige zeigen (Paarung, wer beginnt, freiwillig Spieler)
+  ['#modeFs','#rulesFs','#n1','#n2'].forEach(x=>$(x).classList.toggle('hidden', on));
+  ['#tmCard','#tmFirstFs','.tmOnly'].forEach(x=>$(x).classList.toggle('hidden', !on));
+  $('#tmInfo').classList.add('hidden');
+  $('#tmGive').classList.toggle('hidden', !on);
+  $('#teamsLeg').textContent = on ? 'Spielernamen' : 'Teams';
+  $('#setupTitle').textContent = on ? 'Spiel bereit' : 'Dart-Zähler';
+  $('#setupLead').textContent = on ? `${SETUP_TM.label} · Scheibe ${SETUP_TM.board}` : 'Spiel einrichten';
+  $('#n1lab').textContent = on ? $('#n1').value : 'Team 1';
+  $('#n2lab').textContent = on ? $('#n2').value : 'Team 2';
+  if(on){
+    const f = m ? fmtOf(m) : DEF_FMT;
+    $('#tmCard').innerHTML = `<small>Turnierspiel · ${esc(SETUP_TM.label)}</small><div class="vs">${esc($('#n1').value)}<em>gegen</em>${esc($('#n2').value)}</div><div class="mt">${fmtTxt(f)}</div>`;
+    const sb = document.querySelectorAll('#firstSeg button');
+    sb[0].textContent = $('#n1').value; sb[1].textContent = $('#n2').value;
+    sb.forEach(b=>{ b.classList.remove('on'); b.setAttribute('aria-pressed','false'); });
+    $('#first').value = ''; $('#startBtn').disabled = true;
+    $('#resumeBtn').classList.add('hidden');
+    $('#startBtn').firstChild.textContent = 'Spiel starten ';
+  } else $('#startBtn').disabled = false;
+}
+document.querySelectorAll('#firstSeg button').forEach(b=>b.onclick = () => {
+  document.querySelectorAll('#firstSeg button').forEach(x=>{ x.classList.toggle('on', x===b); x.setAttribute('aria-pressed', x===b); });
+  $('#first').value = b.dataset.v; $('#startBtn').disabled = false;
+});
+$('#setupBack').onclick = () => SETUP_TM ? showBoard() : showHome();
+$('#tmGive').onclick = async () => {
+  if(!SETUP_TM || !confirm('Spiel zurückgeben? Es wird dann wieder für alle Scheiben frei.')) return;
+  try{ await rpc('unclaim_match', {p_code:BD.code, p_board:SETUP_TM.board, p_match:SETUP_TM.id}); }
+  catch(e){ bvMsg = {t:e.message, err:true}; }
+  SETUP_TM = null; showBoard();
+};
+
+/* Resultat senden (mit Zwischenspeicher, falls das WLAN kurz weg ist) */
+async function sendResult(){
+  const tm = S && S.cfg.tm; if(!tm || tm.sent || tm.sending) return;
+  if(!BD || !BD.code){ tm.err = 'Keine Scheibe oder kein Zähler-Code. Zuerst unter «Scheibe» die Scheibe und den Code eingeben.'; save(); rerenderTm(); return; }
+  const lt = [0,1].map(p=>S.lw.filter(w=>w.p===p).length);
+  const r1 = v => v==null ? null : Math.round(v*100)/100;
+  const stats = {teams:[0,1].map(t=>{ const c = calc(t,-1); return {avg:r1(c.avg), f9:r1(c.f9), c180:c.c180, c140:c.c140, c100:c.c100, hi:c.hi, best:c.best, short:c.short, darts:c.darts}; }), players:S.cfg.plRaw};
+  const body = {p_code:BD.code, p_board:tm.board, p_match:tm.id, p_sets_a:S.sets[0], p_sets_b:S.sets[1], p_legs_a:lt[0], p_legs_b:lt[1], p_stats:stats};
+  tm.sending = true; tm.err = ''; rerenderTm();
+  try{ await rpc('submit_result', body); tm.sent = true; tm.queued = false; }
+  catch(e){
+    if(e.net){
+      const q = lsGet(QKEY, []).filter(x=>x.p_match!==body.p_match); q.push(body); lsSet(QKEY, q);
+      tm.queued = true; tm.err = 'Keine Verbindung. Das Resultat ist gespeichert und wird automatisch gesendet, sobald die Verbindung wieder steht.';
+    } else if(codeCheck(e)) tm.err = 'Der Zähler-Code wurde geändert. Unter «Scheibe» den neuen Code eingeben und dann das Resultat erneut senden.';
+    else tm.err = 'Senden nicht möglich: ' + e.message + '. Bitte der Turnierleitung melden.';
+  }
+  tm.sending = false; save(); rerenderTm();
+}
+function rerenderTm(){ const v = curView(); if(v==='game') render(); else if(v==='bview') renderBoard(true); }
+let flushing = false;
+async function flushQueue(){
+  const q = lsGet(QKEY, []); if(!q.length || flushing) return;
+  flushing = true; const rest = [];
+  for(const body of q){
+    const mine = S && S.cfg.tm && S.cfg.tm.id===body.p_match ? S.cfg.tm : null;
+    try{ await rpc('submit_result', body); if(mine){ mine.sent = true; mine.queued = false; mine.err = ''; } }
+    catch(e){ if(e.net) rest.push(body); else if(mine){ mine.queued = false; mine.err = 'Senden nicht möglich: ' + e.message + '. Bitte der Turnierleitung melden.'; } }
+  }
+  lsSet(QKEY, rest.length ? rest : null);
+  flushing = false;
+  if(S && S.cfg.tm){ save(); if(curView()==='game') render(); }
+}
+/* Laufenden Spielstand für den Turnierplan übertragen */
+let liveT = null, liveLast = '';
+function pushLive(){
+  const tm = S && S.cfg.tm; if(!tm || !BD || S.over) return;
+  clearTimeout(liveT);
+  liveT = setTimeout(()=>{
+    if(!S || !S.cfg.tm || S.cfg.tm.id!==tm.id) return;
+    const L = {sets:S.sets, legs:S.legs, legsTot:[0,1].map(p=>S.lw.filter(w=>w.p===p).length), rest:S.scores, turn:S.turn};
+    const k = tm.id + JSON.stringify(L); if(k===liveLast) return; liveLast = k;
+    rpc('push_live', {p_code:BD.code, p_board:tm.board, p_match:tm.id, p_live:L}).catch(()=>{ liveLast = ''; });
+  }, 1200);
+}
+
+/* ---------- Admin ---------- */
+let adTab = 'flow', adDirty = false, adCode = null, adMsg = null;
+const ATABS = [['flow','Ablauf'],['boards','Scheiben'],['groups','Gruppen'],['ko','K.o.-Phase'],['all','Alle Spiele'],['settings','Einstellungen']];
+const adForm = () => adTab==='flow' || adTab==='settings';
+const opts = (a,b,sel) => { let s = ''; for(let i=a;i<=b;i++) s += `<option value="${i}" ${i===+sel?'selected':''}>${i}</option>`; return s; };
+async function checkAdmin(){
+  if(!sess){ isAdm = false; return; }
+  try{
+    isAdm = !!(await rpc('is_admin'));
+    if(isAdm && adCode==null){ const s = await api('/rest/v1/secrets?select=counter_code'); adCode = (s[0] && s[0].counter_code) || ''; }
+  }catch(e){ if(!e.net) isAdm = false; }
+  if(curView()==='admin') renderAdmin(!adDirty);
+}
+$('#adTabs').onclick = e => { const b = e.target.closest('button'); if(!b) return; adTab = b.dataset.t; adDirty = false; adMsg = null; renderAdmin(true); };
+$('#adBody').addEventListener('click', e => {
+  if(adForm() || !isAdm) return;
+  const el = e.target.closest('[data-id]'); if(el) openMatchDlg(+el.dataset.id);
+});
+function renderAdmin(force){
+  $('#adOut').classList.toggle('hidden', !sess);
+  const body = $('#adBody');
+  if(!sess || !isAdm){
+    $('#adTabs').classList.add('hidden');
+    if(!force && body.querySelector('#adLogin')) return;
+    body.innerHTML = `<div class="page" style="padding-top:10px">
+      <h1 class="title">Anmelden</h1><p class="lead">Nur für die Turnierleitung</p>
+      ${sess && !isAdm ? `<p class="note err">Das Konto ${esc(sess.email||'')} hat keine Admin-Rechte.</p>` : ''}
+      <form id="adLogin" class="grid2">
+        <div class="f"><label for="adEmail">E-Mail</label><input id="adEmail" type="email" autocomplete="username" required></div>
+        <div class="f"><label for="adPw">Passwort</label><input id="adPw" type="password" autocomplete="current-password" required></div>
+        <p class="note err hidden" id="adErr" style="grid-column:1/-1;margin:0"></p>
+        <button class="btn" style="grid-column:1/-1">Anmelden</button>
+      </form></div>`;
+    $('#adLogin').onsubmit = async e => {
+      e.preventDefault();
+      const errEl = $('#adErr');
+      try{
+        const r = await fetch(SB_URL+'/auth/v1/token?grant_type=password', {method:'POST', headers:{apikey:SB_KEY,'Content-Type':'application/json'}, body:JSON.stringify({email:$('#adEmail').value.trim(), password:$('#adPw').value})});
+        const d = await r.json().catch(()=>({}));
+        if(!r.ok) throw new Error(/invalid/i.test((d.error_code||'')+(d.msg||'')+(d.error_description||'')) ? 'E-Mail oder Passwort falsch.' : (d.msg || d.error_description || 'Anmeldung fehlgeschlagen.'));
+        setSess(d); await checkAdmin(); refresh();
+      }catch(e2){ errEl.textContent = e2 instanceof TypeError ? 'Keine Verbindung zum Server.' : e2.message; errEl.classList.remove('hidden'); }
+    };
+    return;
+  }
+  $('#adTabs').classList.remove('hidden');
+  $('#adTabs').innerHTML = tabsHtml(ATABS, adTab);
+  if(adForm()){
+    const ae = document.activeElement;
+    if(!force && (adDirty || (ae && ae.matches && ae.matches('#adBody input, #adBody select, #adBody textarea')))) return;
+    body.innerHTML = adSetup();
+    bindAdSetup();
+  } else body.innerHTML = (D.matches.length ? '<p class="hint" style="margin:0 0 16px">Klicke auf ein Spiel, um ein Resultat einzutragen oder zu korrigieren, es zurückzusetzen, einer Scheibe zuzuteilen oder freizugeben.</p>' : '') + planBody(adTab, true);
+}
+function flash(t, err){
+  adMsg = t ? {t, err} : null;
+  const el = $('#adFlash'); if(!el) return;
+  el.innerHTML = t ? `<p class="note ${err?'err':'ok'}">${esc(t)}</p>` : '';
+  if(t) el.scrollIntoView({block:'nearest'});
+}
+async function act(fn, ok){
+  try{ await fn(); adDirty = false; adMsg = ok ? {t:ok} : null; await refresh(); renderAdmin(true); }
+  catch(e){ flash(e.message, true); }
+}
+const STEPS = [['Teams','erfassen'],['Gruppen','einteilen'],['Gruppenphase','spielen'],['K.o.-Phase','spielen'],['Fertig','Siegerehrung']];
+function adState(){
+  const gm = D.matches.filter(m=>m.stage==='G'), ko = D.matches.filter(m=>m.stage!=='G');
+  const fin = ko.find(m=>m.stage==='F');
+  const grouped = D.teams.length>0 && D.teams.every(t=>t.grp) && GRPS.every(g=>D.teams.filter(t=>t.grp===g).length>=2);
+  let step = 0;
+  if(!gm.length) step = D.teams.length >= 2*GRPS.length ? 1 : 0;
+  else if(!ko.length) step = 2;
+  else step = fin && fin.status==='done' ? 4 : 3;
+  return {gm, ko, fin, grouped, step};
+}
+const progBar = (done, tot) => `<div class="prog num"><span><b>${done}</b> von ${tot} Spielen beendet</span><div class="b"><i style="width:${tot ? done/tot*100 : 0}%"></i></div></div>`;
+function teamGrid(editable){
+  return `<div class="tgroups">` + [...GRPS, ''].map(g=>{
+    const ts = D.teams.filter(t=>(t.grp||'')===g);
+    if(g==='' && !ts.length) return '';
+    return `<div class="tg"><h4>${g ? 'Gruppe '+g : 'Ohne Gruppe'} <span>${ts.length}</span></h4>${ts.map(t=> editable
+      ? `<div><span>${esc(t.name)}</span><select data-grp="${t.id}" aria-label="Gruppe für ${esc(t.name)}"><option value="">–</option>${GRPS.map(x=>`<option ${x===t.grp?'selected':''}>${x}</option>`).join('')}</select></div>`
+      : `<div style="grid-template-columns:1fr"><input type="text" data-ren="${t.id}" value="${esc(t.name)}" maxlength="40" aria-label="Name von ${esc(t.name)}"></div>`).join('')}</div>`;
+  }).join('') + `</div>`;
+}
+const teamsArea = () => `<div class="f"><label for="aTeams">Ein Team pro Zeile</label><textarea id="aTeams" spellcheck="false" placeholder="FC Malters A&#10;FC Malters B&#10;…">${esc(D.teams.map(t=>t.name).join('\n'))}</textarea></div>`;
+function adSetup(){
+  const c = D.config; if(!c) return `<p class="empty">${syncState.ok===false ? 'Keine Verbindung zum Server.' : 'Lädt …'}</p>`;
+  if(adTab==='settings') return adSettings();
+  const st = adState(), hasM = D.matches.length>0;
+  let h = `<div id="adFlash">${adMsg ? `<p class="note ${adMsg.err?'err':'ok'}">${esc(adMsg.t)}</p>` : ''}</div>`;
+  h += `<ol class="steps">${STEPS.map(([a,b],i)=>`<li class="${i<st.step?'done':i===st.step?'cur':''}">${i+1}. ${a}<span>${b}</span></li>`).join('')}</ol>`;
+  // Nächster Schritt
+  h += `<section class="todo"><small>${st.step===4 ? 'Stand' : 'Nächster Schritt'}</small>`;
+  if(st.step===0){
+    h += `<h2>Teams erfassen</h2><p>Alle Teams eingeben, ein Team pro Zeile (mindestens ${2*GRPS.length}). Danach speichern.</p>
+      ${teamsArea()}<div class="adm-row" style="margin-top:12px"><button class="btn" id="aTeamsSave">Teams speichern</button><span class="hint" style="margin:0">${D.teams.length} gespeichert</span></div>`;
+  } else if(st.step===1){
+    if(!st.grouped){
+      h += `<h2>Gruppen auslosen</h2><p>${D.teams.length} Teams sind erfasst. «Gruppen auslosen» verteilt sie zufällig auf ${GRPS.length} Gruppen. Danach kannst du jedes Team unten von Hand umteilen.</p>
+        <div class="adm-row"><button class="btn" id="aDraw">Gruppen auslosen</button></div>`;
+    } else {
+      h += `<h2>Spielplan erstellen</h2><p>Die Gruppen stehen. Kontrolliere sie unten und erstelle dann den Spielplan: jeder gegen jeden, Gruppe A an Scheibe 1, Gruppe B an Scheibe 2 usw. Jede Scheibe bekommt nur ihre eigenen Spiele. Danach können die Zähler loslegen.</p>
+        <div class="adm-row"><button class="btn" id="aSched">Spielplan erstellen</button><button class="btn sec" id="aDraw">Neu auslosen</button></div>`;
+    }
+  } else if(st.step===2){
+    const done = st.gm.filter(m=>m.status==='done').length, live = st.gm.filter(m=>m.status==='live').length, left = st.gm.length - done;
+    if(left){
+      h += `<h2>Gruppenphase läuft</h2><p>${live} ${live===1?'Spiel läuft':'Spiele laufen'} gerade. Die Resultate kommen automatisch von den Zählern. Die K.o.-Phase kannst du erstellen, sobald alle Gruppenspiele beendet sind (noch ${left}).</p>
+        ${progBar(done, st.gm.length)}<div class="adm-row"><button class="btn sec" data-go="boards">Scheiben ansehen</button><button class="btn sec" data-go="groups">Tabellen ansehen</button></div>`;
+    } else {
+      h += `<h2>K.o.-Phase erstellen</h2><p>Alle Gruppenspiele sind beendet. Die Gruppenersten spielen gegen die Gruppenzweiten (A1–B2, B1–A2, C1–D2 …). Kontrolliere vorher die Tabellen.</p>
+        <div class="adm-row"><button class="btn" id="aKO">K.o.-Phase erstellen</button><button class="btn sec" data-go="groups">Tabellen ansehen</button></div>`;
+    }
+  } else if(st.step===3){
+    const nextSt = STAGES.find(s=>st.ko.some(m=>m.stage===s && !m.released));
+    const cur = [...STAGES].reverse().find(s=>st.ko.some(m=>m.stage===s && m.released));
+    const curMs = st.ko.filter(m=>m.stage===cur), curLeft = curMs.filter(m=>m.status!=='done').length;
+    if(nextSt && (!cur || !curLeft)){
+      h += `<h2>${STAGE_PL[nextSt]} freigeben</h2><p>${cur ? `Die ${STAGE_PL[cur]} sind fertig. ` : ''}Sobald du freigibst, erscheinen die ${STAGE_PL[nextSt]} bei den Zählern.</p>
+        <p class="hint" style="margin:-6px 0 14px">Verteilung auf die Scheiben: ${nextSt==='R16' ? 'Achtelfinal 1 an Scheibe 1, Achtelfinal 2 an Scheibe 2 usw.' : nextSt==='QF' ? 'Viertelfinals an den Scheiben 1, 3, 5 und 7.' : nextSt==='SF' ? 'Halbfinals an den Scheiben 1 und 5.' : 'Final an Scheibe 1.'} Ändern kannst du das, indem du im Reiter «K.o.-Phase» auf ein Spiel klickst.</p>
+        <div class="adm-row"><button class="btn" data-rel="${nextSt}">${STAGE_PL[nextSt]} freigeben</button><button class="btn sec" data-go="ko">K.o.-Baum ansehen</button></div>`;
+    } else {
+      h += `<h2>${STAGE_PL[cur]} laufen</h2><p>Noch ${curLeft} von ${curMs.length} ${curMs.length===1?'Spiel':'Spielen'} offen. ${nextSt ? `Danach kannst du die ${STAGE_PL[nextSt]} freigeben.` : ''}</p>
+        ${progBar(curMs.length-curLeft, curMs.length)}<div class="adm-row"><button class="btn sec" data-go="ko">K.o.-Baum ansehen</button>${nextSt ? `<button class="btn sec" data-rel="${nextSt}">${STAGE_PL[nextSt]} schon jetzt freigeben</button>` : ''}</div>`;
+    }
+  } else {
+    const w = team(st.fin.winner), l = team(st.fin.winner===st.fin.team_a ? st.fin.team_b : st.fin.team_a);
+    h += `<h2>Turnier beendet</h2><p>Sieger: <b>${esc(w ? w.name : '–')}</b> · Final ${scoreTxt(st.fin)} gegen ${esc(l ? l.name : '–')}</p>
+      <div class="adm-row"><button class="btn sec" data-go="ko">K.o.-Baum ansehen</button></div>`;
+  }
+  h += `</section>`;
+
+  // Weitere Bereiche je nach Schritt
+  if(st.step===1){
+    h += `<h3 class="h2">Gruppen</h3>${teamGrid(true)}
+      <details class="more"><summary>Teams ändern (${D.teams.length})</summary><div>${teamsArea()}<div class="adm-row" style="margin-top:10px"><button class="btn sm" id="aTeamsSave">Teams speichern</button><span class="hint" style="margin:0">Neue Teams haben noch keine Gruppe.</span></div></div></details>`;
+  }
+  if(st.step>=2){
+    h += `<details class="more"><summary>Teamnamen korrigieren</summary><div>${teamGrid(false)}
+      <div class="adm-row" style="margin-top:12px"><button class="btn sm" id="aRename">Namen speichern</button></div></div></details>`;
+  }
+  if(hasM || D.teams.length){
+    h += `<details class="more danger"><summary>Zurücksetzen</summary><div><p class="hint" style="margin-top:0">Löschen lässt sich nicht rückgängig machen.</p><div class="adm-row">
+      ${st.ko.length ? `<button class="btn sm warn" id="aDelKO">K.o.-Phase löschen</button>` : ''}
+      ${hasM ? `<button class="btn sm warn" id="aDelAll">Ganzen Spielplan löschen</button>` : `<button class="btn sm warn" id="aDelTeams">Alle Teams löschen</button>`}
+      </div></div></details>`;
+  }
+  return h;
+}
+function adSettings(){
+  const c = D.config;
+  const fmtFields = (k, f) => `
+    <div class="f"><label for="${k}Start">Startpunkte</label><select id="${k}Start">${[301,501,701].map(v=>`<option value="${v}" ${v===f.start?'selected':''}>${v}</option>`).join('')}</select></div>
+    <div class="f"><label for="${k}Legs">Legs <small>(Erster auf …)</small></label><select id="${k}Legs">${opts(1,9,f.legs)}</select></div>
+    <div class="f"><label for="${k}Sets">Sätze <small>(Erster auf …)</small></label><select id="${k}Sets">${opts(1,5,f.sets)}</select></div>
+    <div class="f"><span class="lab">Checkout</span><label class="check" style="height:50px;margin:0"><input type="checkbox" id="${k}Dout" ${f.dout?'checked':''}> Double-Out</label></div>`;
+  return `<div id="adFlash">${adMsg ? `<p class="note ${adMsg.err?'err':'ok'}">${esc(adMsg.t)}</p>` : ''}</div>
+    <fieldset><legend>Turnier</legend><div class="adm-grid">
+      <div class="f" style="grid-column:span 2"><label for="aTitle">Name des Turniers</label><input id="aTitle" type="text" maxlength="60" value="${esc(c.title)}"></div>
+      <div class="f"><label for="aBoards">Anzahl Scheiben</label><select id="aBoards">${opts(1,16,c.boards)}</select></div>
+      <div class="f"><label for="aCode">Zähler-Code</label><input id="aCode" type="text" maxlength="30" value="${esc(adCode||'')}" placeholder="${adCode==null ? 'lädt …' : 'noch keiner'}"></div>
+    </div><p class="hint">Den Zähler-Code geben die Zähler einmal pro Laptop ein. Ohne Code kann niemand Resultate senden. Wird er geändert, fragen die Laptops automatisch nach dem neuen Code.</p></fieldset>
+    <fieldset><legend>Modus Gruppenphase</legend><div class="adm-grid">${fmtFields('g', c.group_fmt)}</div></fieldset>
+    <fieldset><legend>Modus K.o.-Phase</legend><div class="adm-grid">${fmtFields('k', c.ko_fmt)}</div></fieldset>
+    ${D.matches.length ? '<p class="note">Änderungen am Modus gelten für Spiele, die danach übernommen werden. Laufende Spiele zählen mit dem alten Modus fertig.</p>' : ''}
+    <div class="adm-row"><button class="btn" id="aSave">Einstellungen speichern</button></div>`;
+}
+function rr(ids){
+  // Jeder gegen jeden (Kreis-Methode), Runde für Runde
+  const a = ids.slice(); if(a.length % 2) a.push(null);
+  const n = a.length, R = [];
+  for(let r=0;r<n-1;r++){
+    const P = [];
+    for(let i=0;i<n/2;i++){ const x = a[i], y = a[n-1-i]; if(x!=null && y!=null) P.push(r%2 ? [y,x] : [x,y]); }
+    R.push(P); a.splice(1, 0, a.pop());
+  }
+  return R;
+}
+const KO_PAIRS = [['A','B'],['C','D'],['E','F'],['G','H'],['B','A'],['D','C'],['F','E'],['H','G']];
+function bindAdSetup(){
+  const B = $('#adBody');
+  B.oninput = e => { if(!e.target.dataset.grp) adDirty = true; };
+  B.onchange = e => {
+    const id = e.target.dataset.grp;
+    if(id) act(()=>api('/rest/v1/teams?id=eq.'+id, {method:'PATCH', body:{grp:e.target.value || null}}));
+    else adDirty = true;
+  };
+  const on = (id, fn) => { const x = $('#'+id); if(x) x.onclick = fn; };
+  document.querySelectorAll('#adBody [data-go]').forEach(b=>b.onclick = () => { adTab = b.dataset.go; adMsg = null; renderAdmin(true); window.scrollTo(0,0); });
+  const fmt = k => ({start:+$('#'+k+'Start').value, sets:+$('#'+k+'Sets').value, legs:+$('#'+k+'Legs').value, dout:$('#'+k+'Dout').checked});
+  on('aSave', () => act(async()=>{
+    await api('/rest/v1/config?id=eq.1', {method:'PATCH', body:{title:$('#aTitle').value.trim() || 'Darts-Turnier', boards:+$('#aBoards').value, group_fmt:fmt('g'), ko_fmt:fmt('k')}});
+    const code = $('#aCode').value.trim();
+    await api('/rest/v1/secrets?id=eq.1', {method:'PATCH', body:{counter_code:code}});
+    adCode = code;
+  }, 'Einstellungen gespeichert.'));
+  on('aTeamsSave', () => act(async()=>{
+    const names = $('#aTeams').value.split('\n').map(s=>s.trim().replace(/\s+/g,' ')).filter(Boolean);
+    const low = names.map(n=>n.toLowerCase());
+    const dup = [...new Set(names.filter((n,i)=>low.indexOf(n.toLowerCase())!==i))];
+    if(dup.length) throw new Error('Doppelte Namen: ' + dup.join(', '));
+    if(names.length > 64) throw new Error('Höchstens 64 Teams.');
+    if(names.some(n=>n.length>40)) throw new Error('Teamnamen dürfen höchstens 40 Zeichen lang sein.');
+    const del = D.teams.filter(t=>!names.includes(t.name)), add = names.filter(n=>!D.teams.some(t=>t.name===n));
+    if(del.length) await api('/rest/v1/teams?id=in.(' + del.map(t=>t.id).join(',') + ')', {method:'DELETE'});
+    if(add.length) await api('/rest/v1/teams', {method:'POST', body:add.map(n=>({name:n}))});
+  }, 'Teams gespeichert.'));
+  on('aDraw', () => {
+    if(D.teams.some(t=>t.grp) && !confirm('Die bisherige Gruppeneinteilung wird überschrieben. Neu auslosen?')) return;
+    act(async()=>{
+      const ts = D.teams.slice();
+      for(let i=ts.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [ts[i],ts[j]] = [ts[j],ts[i]]; }
+      await Promise.all(ts.map((t,i)=>api('/rest/v1/teams?id=eq.'+t.id, {method:'PATCH', body:{grp:GRPS[i % GRPS.length], pos:Math.floor(i / GRPS.length)}})));
+    }, 'Gruppen ausgelost.');
+  });
+  on('aRename', () => act(async()=>{
+    const ch = [...document.querySelectorAll('[data-ren]')].map(i=>({id:+i.dataset.ren, name:i.value.trim().replace(/\s+/g,' ')})).filter(x=>x.name && x.name!==(team(x.id)||{}).name);
+    await Promise.all(ch.map(x=>api('/rest/v1/teams?id=eq.'+x.id, {method:'PATCH', body:{name:x.name}})));
+  }, 'Namen gespeichert.'));
+  on('aSched', () => {
+    if(!confirm(`Spielplan für ${D.teams.length} Teams in ${GRPS.length} Gruppen erstellen? Danach können die Zähler die Spiele übernehmen.`)) return;
+    act(async()=>{
+      const rows = [], nb = boardsN();
+      GRPS.forEach((g,gi)=>{
+        const ids = D.teams.filter(t=>t.grp===g).sort((a,b)=>(a.pos==null?99:a.pos)-(b.pos==null?99:b.pos) || a.id-b.id).map(t=>t.id);
+        rr(ids).forEach((P,r)=>P.forEach(([x,y],k)=>rows.push({stage:'G', grp:g, round:r+1, seq:r*1000+gi*10+k, team_a:x, team_b:y, plan_board:(gi % nb)+1, released:true})));
+      });
+      await api('/rest/v1/matches', {method:'POST', body:rows});
+    }, 'Spielplan erstellt. Die Zähler können jetzt die Spiele übernehmen.');
+  });
+  on('aKO', () => {
+    if(!confirm('K.o.-Phase mit den Gruppenersten und -zweiten erstellen?')) return;
+    act(async()=>{
+      const T = {}; GRPS.forEach(g=>T[g] = standings(g).rows);
+      if(GRPS.some(g=>T[g].length < 2)) throw new Error('Jede Gruppe braucht mindestens 2 Teams.');
+      const nb = boardsN(), rows = [];
+      const row = o => Object.assign({stage:null, slot:null, seq:0, team_a:null, team_b:null, src_a:null, src_b:null, plan_board:null, released:false}, o);
+      KO_PAIRS.forEach(([g1,g2],i)=>rows.push(row({stage:'R16', slot:i+1, seq:10000+i, team_a:T[g1][0].t.id, team_b:T[g2][1].t.id, src_a:'1. Gruppe '+g1, src_b:'2. Gruppe '+g2, plan_board:(i % nb)+1})));
+      const add = (st, n, prev, base, step) => { for(let i=1;i<=n;i++) rows.push(row({stage:st, slot:i, seq:base+i, src_a:'Sieger '+prev+' '+(2*i-1), src_b:'Sieger '+prev+' '+(2*i), plan_board:(((i-1)*step) % nb)+1})); };
+      add('QF', 4, 'AF', 20000, 2); add('SF', 2, 'VF', 30000, 4); add('F', 1, 'HF', 40000, 1);
+      await api('/rest/v1/matches', {method:'POST', body:rows});
+    }, 'K.o.-Phase erstellt. Jetzt die Achtelfinals freigeben, sobald es losgehen soll.');
+  });
+  document.querySelectorAll('[data-rel]').forEach(b=>b.onclick = () => act(
+    ()=>api('/rest/v1/matches?stage=eq.'+b.dataset.rel, {method:'PATCH', body:{released:true}}), STAGE_PL[b.dataset.rel]+' freigegeben.'));
+  on('aDelKO', () => {
+    const started = D.matches.some(m=>m.stage!=='G' && m.status!=='open');
+    if(!confirm(started ? 'Achtung: In der K.o.-Phase wurden schon Spiele gespielt. Trotzdem die ganze K.o.-Phase löschen?' : 'K.o.-Phase löschen?')) return;
+    act(()=>api('/rest/v1/matches?stage=neq.G', {method:'DELETE'}), 'K.o.-Phase gelöscht.');
+  });
+  on('aDelAll', () => {
+    if(!confirm('Ganzen Spielplan mit allen Resultaten löschen? Die Teams und Gruppen bleiben.')) return;
+    if(D.matches.some(m=>m.status!=='open') && !confirm('Es gibt bereits Resultate. Wirklich alles löschen?')) return;
+    act(()=>api('/rest/v1/matches?id=gt.0', {method:'DELETE'}), 'Spielplan gelöscht.');
+  });
+  on('aDelTeams', () => {
+    if(!confirm('Alle Teams löschen?')) return;
+    act(()=>api('/rest/v1/teams?id=gt.0', {method:'DELETE'}), 'Teams gelöscht.');
+  });
+}
+
+/* Spiel bearbeiten (Admin) */
+function closeDlg(){ $('#amodal').classList.add('hidden'); }
+$('#amodal').addEventListener('click', e => { if(e.target.id==='amodal') closeDlg(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape' && !$('#amodal').classList.contains('hidden')) closeDlg(); });
+async function openMatchDlg(id){
+  // immer den aktuellen Stand holen (die Übersicht kann bis zu 5 s alt sein)
+  try{
+    const r = await api('/rest/v1/matches?select=*&id=eq.'+id);
+    if(r && r[0]){ const i = D.matches.findIndex(x=>x.id===id); if(i>=0) D.matches[i] = r[0]; }
+  }catch(e){}
+  const m = D.matches.find(x=>x.id===id); if(!m) return;
+  const sets = useSets(m), nb = boardsN();
+  const v = k => m[k]==null ? '' : m[k];
+  const inp = (id, k, max) => `<input type="number" min="0" max="${max}" id="${id}" value="${v(k)}" aria-label="${k}">`;
+  $('#acard').innerHTML = `<h2 class="title">${mLabel(m)}</h2>
+    <p class="info">${statusTxt(m)}${m.started_at ? ' · Start '+hhmm(m.started_at) : ''}${m.finished_at ? ' · Ende '+hhmm(m.finished_at) : ''}</p>
+    <div class="res"><span></span>${sets ? '<span class="h">Sätze</span>' : '<span></span>'}<span class="h">Legs</span>
+      <b>${esc(tn(m,'a'))}</b>${sets ? inp('dSa','sets_a',9) : '<span></span>'}${inp('dLa','legs_a',40)}
+      <b>${esc(tn(m,'b'))}</b>${sets ? inp('dSb','sets_b',9) : '<span></span>'}${inp('dLb','legs_b',40)}
+    </div>
+    <div class="grid2" style="text-align:left">
+      <div class="f"><label for="dBoard">Scheibe</label><select id="dBoard"><option value="">Beliebig (erste freie Scheibe)</option>${Array.from({length:nb},(_,i)=>`<option value="${i+1}" ${m.plan_board===i+1?'selected':''}>Scheibe ${i+1}</option>`).join('')}</select></div>
+      <div class="f"><span class="lab">Freigabe</span><label class="check" style="height:50px;margin:0"><input type="checkbox" id="dRel" ${m.released?'checked':''}> Freigegeben</label></div>
+    </div>
+    <p class="err" id="dErr" role="alert"></p>
+    <div class="btns three"><button class="btn sec" id="dCancel">Abbrechen</button><button class="btn warn" id="dReset" ${m.status==='open'?'disabled':''}>Zurücksetzen</button><button class="btn" id="dSave">Speichern</button></div>
+    <p class="info">Mit einem Resultat gilt das Spiel als beendet. «Zurücksetzen» macht es wieder offen, z.B. wenn ein Zähler das falsche Spiel übernommen hat.</p>`;
+  $('#amodal').classList.remove('hidden');
+  const dErr = t => { $('#dErr').textContent = t; };
+  const saveM = async body => {
+    try{ await api('/rest/v1/matches?id=eq.'+m.id, {method:'PATCH', body}); closeDlg(); await refresh(); }
+    catch(e){ dErr(e.message); }
+  };
+  $('#dCancel').onclick = closeDlg;
+  $('#dReset').onclick = () => {
+    if(!confirm(m.status==='live' ? `Das Spiel läuft gerade an Scheibe ${m.board}. Trotzdem zurücksetzen? Der Zähler kann dann kein Resultat mehr senden.` : 'Resultat löschen und Spiel wieder öffnen?')) return;
+    saveM({status:'open', board:null, sets_a:null, sets_b:null, legs_a:null, legs_b:null, winner:null, started_at:null, finished_at:null, live:null});
+  };
+  $('#dSave').onclick = () => {
+    const n = id => { const el = $('#'+id); return el && el.value!=='' ? Math.max(0, Math.floor(+el.value)) : null; };
+    const la = n('dLa'), lb = n('dLb'); let sa = sets ? n('dSa') : null, sb = sets ? n('dSb') : null;
+    const body = {plan_board: $('#dBoard').value ? +$('#dBoard').value : null, released: $('#dRel').checked};
+    if([la,lb,sa,sb].some(x=>x!=null)){
+      if(la==null || lb==null || (sets && (sa==null || sb==null))) return dErr('Bitte das Resultat vollständig eintragen.');
+      if(!m.team_a || !m.team_b) return dErr('Die Teams stehen noch nicht fest.');
+      if(!sets){ if(la===lb) return dErr('Ein Unentschieden ist nicht möglich.'); sa = la>lb ? 1 : 0; sb = 1-sa; }
+      if(sa===sb) return dErr('Ein Unentschieden ist nicht möglich.');
+      Object.assign(body, {status:'done', sets_a:sa, sets_b:sb, legs_a:la, legs_b:lb, winner: sa>sb ? m.team_a : m.team_b, finished_at: m.finished_at || new Date().toISOString(), live:null});
+    }
+    saveM(body);
+  };
+  $('#dSave').focus();
+}
+document.querySelectorAll('.fsB').forEach(b=>b.onclick = toggleFs);
+
 /* ---------- Buttons ---------- */
 $('#undoBtn').onclick = undo;
 $('#statBtn').onclick = showStats;
 $('#backBtn').onclick = showGame;
 $('#newBtn').onclick = () => {
+  if(S && S.cfg.tm){ showBoard(); return; }
   if(S && !S.over && (H.length) && !confirm('Laufendes Spiel verlassen und neues Spiel einrichten?')) return;
   showSetup();
 };
-$('#fsBtn').onclick = $('#fsBtn2').onclick = () => {
+function toggleFs(){
   if(document.fullscreenElement) document.exitFullscreen();
   else document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
-};
+}
+$('#fsBtn').onclick = $('#fsBtn2').onclick = toggleFs;
 
 /* ---------- Start ---------- */
 buildPad();
 [0,1].forEach(t=>renderPlayers(t, ['','']));
-if(load() && !S.over){ $('#resumeBtn').classList.remove('hidden'); fillSetup(S.cfg); }
-else if(S){ fillSetup(S.cfg); S = null; }
+if(load() && S.over && !(S.cfg.tm && !S.cfg.tm.sent && !S.cfg.tm.queued)) S = null;
+if(S && S.cfg.tm) S.cfg.tm.sending = false;
+(function route(){
+  const h = location.hash.slice(1);
+  if(h==='plan') showPlan('home');
+  else if(h==='admin') showAdmin();
+  else if(h==='zaehlen' || (S && S.cfg.tm)) showBoard();
+  else if(S && !S.over) showFree();
+  else showHome();
+})();
 </script>
 </body>
 </html>
